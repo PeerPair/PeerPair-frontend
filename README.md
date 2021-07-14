@@ -45,5 +45,5 @@ profile_image .
 
 <br>
 
-[db-schema](https://github.com/PeerPair/PeerPair/blob/main/assets/images/schema.jpg)
+![db-schema](https://github.com/PeerPair/PeerPair/blob/main/assets/images/schema.jpg)
 
