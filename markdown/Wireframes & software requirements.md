@@ -65,7 +65,7 @@ MarkDown File : [Software Requirements](https://github.com/PeerPair/PeerPair-fro
 ## Domain Modeling
 Miro Link : [Domain Modeling](https://miro.com/app/board/o9J_l_m0Owo=/)
 
-![db-schema](https://github.com/PeerPair/PeerPair/blob/main/assets/images/schema.jpg?raw=true)
+![Domain Modeling](https://github.com/PeerPair/PeerPair/blob/dev/assets/images/PeerPair.jpg?raw=true)
 
 
 
