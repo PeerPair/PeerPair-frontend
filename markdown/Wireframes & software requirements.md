@@ -15,7 +15,7 @@ A lot of things need a partner to be done, or might be better if you have a part
 
 ## Wireframes
 
-Miro Link : [wireframes](https://miro.com/app/board/o9J_l_aO4es=/)
+Miro Link : [Wireframes](https://miro.com/app/board/o9J_l_aO4es=/)
 
 ## User Stories
 #### **Feature One** : 
