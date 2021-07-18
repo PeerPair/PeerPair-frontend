@@ -5,11 +5,10 @@ import superagent from 'superagent';
 import { useState } from 'react';
 import { useEffect } from 'react';
 
-const API = 'https://peer-pair.herokuapp.com';
-const SECRET = 'Mousa';
 
 
 export const LoginContext = React.createContext();
+
 
 function LoginProvider(props){
 
@@ -26,7 +25,7 @@ const login = async(email, password)=>{
     console.log(email,password);
     try{
     
-        const response = await superagent.post(`${API}/signin`)
+        const response = await superagent.post(`${process.env.REACT_APP_API_URL}/signin`)
             .set('authorization', `Basic ${btoa(`${email}:${password}`)}`);
         
         validateToken(response.body.token);
@@ -36,7 +35,7 @@ const login = async(email, password)=>{
 }
  const validateToken = token => {
     try {
-      let user = jwt.verify(token, SECRET);
+      let user = jwt.verify(token, process.env.REACT_APP_SECRET);
       console.log('all good');
       console.table(user)
 
@@ -55,7 +54,7 @@ const login = async(email, password)=>{
         try{
           console.log('hhhhhhh')
         
-        const response = await superagent.post(`${API}/signup`, {first_name, last_name, email, password });
+        const response = await superagent.post(`${process.env.REACT_APP_API_URL}/signup`, {first_name, last_name, email, password });
         validateToken(response.body.token);
         console.log('response.body.token', response.body.token)
 
