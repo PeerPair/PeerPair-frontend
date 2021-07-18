@@ -11,12 +11,15 @@ import RequestForm from '../createRequestForm/createRequestForm.jsx';
 import SearchResultsPage from '../../pages/searchResults.jsx';
 import SignIn from '../signIn/signIn.jsx';
 import SignUp from '../signUp/signUp.jsx';
+import LoginContext from '../../context/authContext';
+// import Login from './components/todo/logIn';
 
 
 const Main = (props) =>{
-    return (
+  return (
+      <>
+      <LoginContext>
       <Router>
-        <>
         <Header/>
         <Switch>
           <Route exact path="/" component={UserProfilePage}>
@@ -31,8 +34,9 @@ const Main = (props) =>{
           <Route  exact path="/signin" component={SignIn} />
           <Route  exact path="/signup" component={SignUp} />
         </Switch>
-        </>
       </Router>
+      </LoginContext>
+        </>
     )
 }
 
