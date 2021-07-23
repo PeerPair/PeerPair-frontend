@@ -14,6 +14,7 @@ function LoginProvider(props){
 
   const [loggedIn, setLoggedIn]= useState(false);
   const [user, setUser]= useState({});
+  const [isValid, setInvalid] = useState(true);
 
 
   useEffect(()=>{
@@ -30,6 +31,7 @@ const login = async(email, password)=>{
         
         validateToken(response.body.token);
     } catch(error){
+        setInvalid(false);
         console.log('Failed to signIn', error.message)
     }
 }
@@ -39,15 +41,16 @@ const login = async(email, password)=>{
       console.log('all good');
       console.table(user)
 
-      setLoginState(true, token, user);
+      setLoginState(true, token, user, false);
     }
     catch (e) {
         console.log('Token Validation Error', e);
-      setLoginState(false, null, {});
+      setLoginState(false, null, {}, true);
     }
   };
  const logout = () => {
-    setLoginState(false, null, {});
+     console.log('loggedOut')
+    setLoginState(false, null, {}, true);
   };
   const signUp = async(first_name, last_name, email, password)=>{
     console.log('RESPONSE===', first_name, last_name, email, password)
@@ -59,16 +62,18 @@ const login = async(email, password)=>{
         console.log('response.body.token', response.body.token)
 
         }catch(error){
+            setInvalid(false);
             console.log('SignUp Error', error.message);
         }
   }
 
- const setLoginState = (loggedIn, token, user) => {
+ const setLoginState = (loggedIn, token, user, isValid) => {
     cookie.save('auth', token);
     setUser(user);
     setLoggedIn(loggedIn);
+    setInvalid(isValid)
   };
-const state = {login, logout, signUp, loggedIn, user}
+const state = {login, logout, signUp, loggedIn, user, isValid}
     return (
       <LoginContext.Provider value={state}>
         {props.children}

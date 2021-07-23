@@ -14,6 +14,7 @@ import SignUp from '../signUp/signUp.jsx';
 import LoginContext from '../../context/authContext';
 import Chat from '../../pages/chat.jsx';
 // import Login from './components/todo/logIn';
+import OthersProfile from '../othersProfile/othersProfile'
 
 
 const Main = (props) =>{
@@ -25,7 +26,7 @@ const Main = (props) =>{
         <Switch>
           <Route exact path="/" component={UserProfilePage}>
           </Route>
-          <Route  exact path="/request/id" component={UserRequestPage} />
+          <Route  exact path="/request/:id" component={UserRequestPage} />
           <Route  exact path="/settings" component={Settings} />
           <Route  exact path="/notification" component={Notification} />
           <Route  exact path="/chat/:id" component={Chat} />
@@ -35,6 +36,9 @@ const Main = (props) =>{
           <Route  exact path="/request" component={RequestForm} />
           <Route  exact path="/signin" component={SignIn} />
           <Route  exact path="/signup" component={SignUp} />
+          <Route  exact path="/profile/:id" component={OthersProfile} />
+
+
         </Switch>
       </Router>
       </LoginContext>

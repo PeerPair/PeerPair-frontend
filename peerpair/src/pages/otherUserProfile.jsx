@@ -1,5 +1,5 @@
 import React from 'react';
-import UserInfo from '../../src/components/userInfo/userInfo.jsx';
+import OthersProfile from '../components/othersProfile/othersProfile';
 
 
 
@@ -7,7 +7,7 @@ import UserInfo from '../../src/components/userInfo/userInfo.jsx';
 const OtherProfilePage = (props) =>{
     return (
         <>
-            <UserInfo/>
+            <OthersProfile/>
         </>
     )
 }
