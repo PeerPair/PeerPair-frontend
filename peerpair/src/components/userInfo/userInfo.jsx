@@ -11,7 +11,6 @@ const UserInfo = (props) =>{
   
   const data = props.info.userInfo.usertData ;
   console.log(props.info,'props.info');
-  console.log(data,'data');
   if(data){
         return (
             <>            
@@ -27,7 +26,7 @@ const UserInfo = (props) =>{
         )
   }
   else return (
-    ""
+    <h4>"is loading"</h4>
   )
 }
 
