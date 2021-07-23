@@ -7,42 +7,53 @@ import { useContext } from 'react';
 import { LoginContext } from '../../context/authContext';
 import { getUserInfo } from '../../store/userInfo/action.js';
 import { connect } from 'react-redux';
+import { useLocation } from 'react-router';
 
 const API = process.env.REACT_APP_API_URL;
 
 //when other user want to view details for one request
 const OtherRequestDetails = (props) =>{
+  function usePathName() {
+    let location = useLocation();
+    useEffect(() => {
+      const returnedParams =["pageview", location.pathname];
+    }, [location]);
+    console.log(location.pathname,'location');
+    return location.pathname ;
+     
+  }
   const contextType = useContext(LoginContext);
-  const [data, setData]= useState([]);
+  const [data, setData]= useState({submitters:[]});
   const [owner, setOwner] = useState([]);
-
   useEffect(() => {
     props.getUserInfo();
   }, []);
 
-  useEffect(()=>{
-     getOthersReq(data._id);
-}, []);
 
 console.log('THE REQUEST ID IS ****', data._id)
 useEffect(()=>{
-  getReqOwner(ownerID);
+  getReqOwner(data.user_ID);
+}, [data]);
+
+useEffect(()=>{
+  getOthersReq();
 }, []);
 
 const user = props.info.userInfo.usertData;
 console.log('USER DATA===>', user);
 
-  async function getOthersReq(id){
+let params = usePathName();
+  async function getOthersReq(){
     try{
         const token = cookie.load('auth');
-        const response = await superagent.get(`${API}/request/${id}`).set({'Authorization' : 'Bearer '+ token});
+        const response = await superagent.get(`${API}${params}`).set({'Authorization' : 'Bearer '+ token});
         console.log('THE REQUEST RESPONSE IS------' , response.body);
         return await setData(response.body)
     } catch(error){
                 console.log('Failed To Get Others Request Data', error.message)
             }
 }
-let ownerID= data.user_ID
+
 async function getReqOwner(id){
   try{
       const token = cookie.load('auth');
@@ -60,8 +71,6 @@ console.log('THE SUBMITTERS ARRAY', data.submitters)
 // if(data){
         return (
             <>
-            <If condition={data.user_ID !== user._id}>
-            <Then>
             <h3>Request Owner Information</h3>
             <img src="http://via.placeholder.com/200x200" alt="placeHolder" />
              <h4>{owner.first_name} {owner.last_name}
@@ -87,13 +96,9 @@ console.log('THE SUBMITTERS ARRAY', data.submitters)
              <button>Submit</button>
              </Else>
              </If>
-             </Then>
-             </If>
             </>
         )
-      // } else return (
-      // ' '
-      // )
+
 }
 
 const mapStateToProps = state => ({
