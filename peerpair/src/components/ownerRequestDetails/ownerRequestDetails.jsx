@@ -5,6 +5,7 @@ import { getUserInfo } from '../../store/userInfo/action.js';
 import RequestSubmitters from '../submitters/submitters.jsx';
 import { useEffect,useState } from "react";
 import cookie from 'react-cookies';
+import OtherUserRequest from '../otherRequestDetails/otherRequestDetails'
 import { Button } from 'react-bootstrap';
 const token = cookie.load('auth');
   
@@ -100,7 +101,9 @@ const RequestDetails = (props) =>{
         else {
           return (
               <>
-                <h4>Request Details For Other here</h4>
+              {/* <div>Hi</div> */}
+              <OtherUserRequest data={request}/>
+                {/* <h4>Request Details For Other here</h4>
                 <div>
                   <h4>{result.usertData.first_name} {result.usertData.last_name}</h4>
                   <h6>{result.usertData.location}</h6>
@@ -113,7 +116,7 @@ const RequestDetails = (props) =>{
                   <p>{request[0].created_date}</p>
                   <p>{request[0].description}</p>
                   <h6>{(request[0].accepted)?'Closed':<Button>Submit</Button>}</h6>
-                </div>
+                </div> */}
               </>
           )
         }
