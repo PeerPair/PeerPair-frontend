@@ -9,6 +9,7 @@ import ExplorePage from '../../pages/explore.jsx';
 import UserProfilePage from '../../pages/home.jsx';
 import RequestForm from '../createRequestForm/createRequestForm.jsx';
 import SearchResultsPage from '../../pages/searchResults.jsx';
+import AllRequestPage from '../../pages/allRequest.jsx';
 import SignIn from '../signIn/signIn.jsx';
 import SignUp from '../signUp/signUp.jsx';
 import LoginContext from '../../context/authContext';
@@ -34,6 +35,7 @@ const Main = (props) =>{
           <Route  exact path="/searchResult" component={SearchResultsPage} />
           <Route  exact path="/explore" component={ExplorePage} />
           <Route  exact path="/request" component={RequestForm} />
+          <Route  exact path="/allRequest" component={AllRequestPage} />
           <Route  exact path="/signin" component={SignIn} />
           <Route  exact path="/signup" component={SignUp} />
           <Route  exact path="/profile/:id" component={OthersProfile} />
