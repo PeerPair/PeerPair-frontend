@@ -25,7 +25,7 @@ const Main = (props) =>{
         <Switch>
           <Route exact path="/" component={UserProfilePage}>
           </Route>
-          <Route  exact path="/request/id" component={UserRequestPage} />
+          <Route  exact path="/request/:id" component={UserRequestPage} />
           <Route  exact path="/settings" component={Settings} />
           <Route  exact path="/notification" component={Notification} />
           <Route  exact path="/search" component={Search} />

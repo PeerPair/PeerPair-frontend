@@ -1,13 +1,104 @@
 import React from 'react';
+import { useState, useEffect } from "react";
+import cookie from "react-cookies";
+import { When, If, Else, Then } from "react-if";
+import superagent from 'superagent';
+import { useContext } from 'react';
+import { LoginContext } from '../../context/authContext';
+import { getUserInfo } from '../../store/userInfo/action.js';
+import { connect } from 'react-redux';
 
+const API = process.env.REACT_APP_API_URL;
 
 //when other user want to view details for one request
 const OtherRequestDetails = (props) =>{
+  const contextType = useContext(LoginContext);
+  const [data, setData]= useState([]);
+  const [owner, setOwner] = useState([]);
+
+  useEffect(() => {
+    props.getUserInfo();
+  }, []);
+
+  useEffect(()=>{
+     getOthersReq(data._id);
+}, []);
+
+console.log('THE REQUEST ID IS ****', data._id)
+useEffect(()=>{
+  getReqOwner(ownerID);
+}, []);
+
+const user = props.info.userInfo.usertData;
+console.log('USER DATA===>', user);
+
+  async function getOthersReq(id){
+    try{
+        const token = cookie.load('auth');
+        const response = await superagent.get(`${API}/request/${id}`).set({'Authorization' : 'Bearer '+ token});
+        console.log('THE REQUEST RESPONSE IS------' , response.body);
+        return await setData(response.body)
+    } catch(error){
+                console.log('Failed To Get Others Request Data', error.message)
+            }
+}
+let ownerID= data.user_ID
+async function getReqOwner(id){
+  try{
+      const token = cookie.load('auth');
+      const response = await superagent.get(`${API}/profile/${id}`).set({'Authorization' : 'Bearer '+ token});
+      console.log('THE Request Owner IS------' , response.body);
+      return await setOwner(response.body)
+  } catch(error){
+              console.log('Failed To Get The Request User Data', error.message)
+          }
+}
+console.log('signedIn User id',user._id );
+console.log('request User id',data.user_ID );
+console.log('THE SUBMITTERS ARRAY', data.submitters)
+
+// if(data){
         return (
             <>
-              <h4>Request Details For Other User here</h4>
+            <If condition={data.user_ID !== user._id}>
+            <Then>
+            <h3>Request Owner Information</h3>
+            <img src="http://via.placeholder.com/200x200" alt="placeHolder" />
+             <h4>{owner.first_name} {owner.last_name}
+             </h4>
+             <If condition={data.accepted === true}>
+               <Then>
+             <h6>This Request Has Been Accepted</h6>
+             </Then>
+             <Else>
+             <h6>This Request Is Not Accepted Yet</h6>
+             </Else>
+             </If>
+             <p>Submitters Number : {data.submitters.length}</p>
+             <p>Keyword: {data.keyword}</p>
+             <p>Category: {data.category}</p>
+             <p>Description: {data.description}</p>
+             <p>Created_date: {data.created_date}</p>
+            <If condition={data.submitters.includes(user._id)}>
+              <Then>
+          <button>Un-Submit</button>
+             </Then>
+             <Else>
+             <button>Submit</button>
+             </Else>
+             </If>
+             </Then>
+             </If>
             </>
         )
+      // } else return (
+      // ' '
+      // )
 }
 
-export default OtherRequestDetails;
+const mapStateToProps = state => ({
+  info: state.userInfo,
+})
+const mapDispatchToProps = { getUserInfo };
+
+export default connect(mapStateToProps, mapDispatchToProps)(OtherRequestDetails);
