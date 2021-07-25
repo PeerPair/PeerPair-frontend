@@ -1,7 +1,7 @@
-import React from 'react';
+import React,{ useEffect } from 'react';
 import { connect } from 'react-redux';
 import { getUserInfo } from '../../store/userInfo/action.js';
-import { useEffect } from "react";
+import UpdateUserInfo from '../updateUserInfo/updateUserInfo.jsx';
 
 
 const UserInfo = (props) =>{
@@ -13,7 +13,8 @@ const UserInfo = (props) =>{
   console.log(props.info,'props.info');
   if(data){
         return (
-            <>            
+            <> 
+              <UpdateUserInfo Provider={data}/>         
               <h4>User Info here</h4>
               <h4>{data.first_name} {data.last_name}</h4>
               <h6>{data.location}</h6>
