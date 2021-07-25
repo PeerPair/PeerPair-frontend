@@ -7,7 +7,8 @@ import { useContext } from 'react';
 import { LoginContext } from '../../context/authContext';
 import { getUserInfo } from '../../store/userInfo/action.js';
 import { connect } from 'react-redux';
-import { useLocation } from 'react-router';
+import { Redirect, useLocation } from 'react-router';
+import { Link } from 'react-router-dom';
 
 const API = process.env.REACT_APP_API_URL;
 
@@ -24,8 +25,13 @@ const OtherRequestDetails = (props) =>{
   const contextType = useContext(LoginContext);
   const [data, setData]= useState({submitters:[]});
   const [owner, setOwner] = useState([]);
+  
   useEffect(() => {
-    props.getUserInfo();
+    const test = async()=>{
+     await  props.getUserInfo();
+    getOthersReq();
+    }
+    test();
   }, []);
 
 
@@ -33,10 +39,6 @@ console.log('THE REQUEST ID IS ****', data._id)
 useEffect(()=>{
   getReqOwner(data.user_ID);
 }, [data]);
-
-useEffect(()=>{
-  getOthersReq();
-}, []);
 
 const user = props.info.userInfo.usertData;
 console.log('USER DATA===>', user);
@@ -63,15 +65,35 @@ async function getReqOwner(id){
               console.log('Failed To Get The Request User Data', error.message)
           }
 }
-console.log('signedIn User id',user._id );
-console.log('request User id',data.user_ID );
-console.log('THE SUBMITTERS ARRAY', data.submitters)
+async function handleSubmit(reqId){
+  try {
+    const token = cookie.load('auth');
+    const response = await superagent.put(`${API}/submit/${reqId}`).set({'Authorization' : 'Bearer '+ token}).send({id : props.info.userInfo.usertData._id});
+    console.log('SUBMIT REQUEST RESPONSE', response);
+    return await setData(response.body);
+  }catch(error){
+    console.log('Failed To Submit To The Request ', error.message)
+  }
+}
+async function handleUnSubmit(reqId){
+  try {
+    const token = cookie.load('auth');
+    const response = await superagent.put(`${API}/unsubmit/${reqId}`).set({'Authorization' : 'Bearer '+ token}).send({id : props.info.userInfo.usertData._id});
+    console.log('SUBMIT REQUEST RESPONSE', response)
+    return await setData(response.body);
+  }catch(error){
+    console.log('Failed To UN-Submit To The Request ', error.message)
+}
+}
+// console.log('signedIn User id',user._id );
+// console.log('request User id',data.user_ID );
+// console.log('THE SUBMITTERS ARRAY', data.submitters)
 
 // if(data){
         return (
             <>
             <h3>Request Owner Information</h3>
-            <img src="http://via.placeholder.com/200x200" alt="placeHolder" />
+            <Link to={`/profile/${data.user_ID}`} ><img src="http://via.placeholder.com/200x200" alt="placeHolder" /></Link>
              <h4>{owner.first_name} {owner.last_name}
              </h4>
              <If condition={data.accepted === true}>
@@ -87,12 +109,15 @@ console.log('THE SUBMITTERS ARRAY', data.submitters)
              <p>Category: {data.category}</p>
              <p>Description: {data.description}</p>
              <p>Created_date: {data.created_date}</p>
-            <If condition={data.submitters.includes(user._id)}>
+            <If condition={data.submitters.includes(props.info.userInfo.usertData._id)}>
               <Then>
-          <button>Un-Submit</button>
+          <button onClick={()=> 
+                handleUnSubmit(data._id)}> 
+            Un-Submit</button>
              </Then>
              <Else>
-             <button>Submit</button>
+             
+             <button onClick={()=> handleSubmit(data._id)}>Submit</button>
              </Else>
              </If>
             </>

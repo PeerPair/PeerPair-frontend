@@ -22,7 +22,7 @@ const UserRequestPage = (props) =>{
         request = props.info.userInfo.allRequest.filter(val=>(val._id ===  props.match.params.id))
         if(request.length) setOnwer(true);
 
-    }, [props.info])
+    }, [props.info.userInfo])
     console.log(request)
 
     return (

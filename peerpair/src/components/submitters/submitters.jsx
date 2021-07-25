@@ -108,7 +108,8 @@ const RequestSubmitters = (props) =>{
                 <h4>{submitter.first_name} {submitter.last_name}</h4>
                 <h6>{submitter.education}</h6>
                 <Button onClick={fetchAcceptedRequest} value={props.Provider.submitters[idx]}>{(props.Provider.accepted)?'Cancel':'Accept'}</Button>
-                <Button onClick={fetchRequestSubmitter} value={props.Provider.submitters[idx]}>Dismiss</Button> 
+                {(props.Provider.accepted)? <Button disabled>Dismiss</Button> :
+                <Button onClick={fetchRequestSubmitter} value={props.Provider.submitters[idx]}> Dismiss</Button> }
                 </li>
                 )
               })}

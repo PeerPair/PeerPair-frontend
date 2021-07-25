@@ -88,7 +88,6 @@ const RequestForm = (props) =>{
               name="profile_image"
               type="file"
               accept=".jpg, .jpeg, .png"
-              required
 
             />
             <If condition={baseImage}>

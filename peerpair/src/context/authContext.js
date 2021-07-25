@@ -82,14 +82,3 @@ const state = {login, logout, signUp, loggedIn, user, isValid}
 }
 
 export default LoginProvider;
-
-
-// "first_name": "ibarhim",
-// "last_name": "Al-khateeb",
-// "password": "1234567a",
-// "email": "ibarhim@gmail.com",
-// "interests": " traveling Sports Art",
-//   "age" : "25",
-//   "user_bio": "love learning new things",
-//   "location": "amman",
-//   "education": "Translator"

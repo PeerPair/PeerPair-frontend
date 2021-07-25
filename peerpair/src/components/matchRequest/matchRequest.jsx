@@ -41,6 +41,7 @@ const MatchRequest = (props) =>{
               return (<Card className="text-center">
               <Card.Header >{(val.accepted)?'Closed':'Open'}</Card.Header>
               <Card.Body>
+              <Link to={`/profile/${val.user_ID}`} ><img src="http://via.placeholder.com/200x200" alt="placeHolder" /></Link>
                 <Card.Title style={{wordSpacing:'10px'}}>{val.keyword.toUpperCase()}</Card.Title>
                 <Card.Text>
                   {val.description}

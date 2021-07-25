@@ -12,23 +12,33 @@ import SearchResultsPage from '../../pages/searchResults.jsx';
 import AllRequestPage from '../../pages/allRequest.jsx';
 import SignIn from '../signIn/signIn.jsx';
 import SignUp from '../signUp/signUp.jsx';
-import LoginContext from '../../context/authContext';
+// import LoginContext from '../../context/authContext';
 import VideoContext from '../../context/video';
 import Chat from '../../pages/chat.jsx';
 // import Login from './components/todo/logIn';
 import OthersProfile from '../othersProfile/othersProfile'
 import video from '../../pages/video.jsx';
+import {LoginContext} from '../../context/authContext';
+import { useContext } from 'react';
+import { If, Then, Else } from 'react-if';
+import LandingPage from '../../pages/landing'
+
 
 
 const Main = (props) =>{
+  const contextType = useContext(LoginContext);
+  
   return (
       <>
-      <LoginContext>
-      <VideoContext>
       <Router>
-        <Header/>
         <Switch>
+      <If condition={contextType.loggedIn === true}>
+      <Then>
+      {/* <LoginContext> */}
+      <VideoContext>
+        <Header/>
           <Route exact path="/" component={UserProfilePage}>
+          {/* ()=> contextType.loggedIn == false ? <LandingPage/>  : <UserProfilePage/>  */}
           </Route>
           <Route  exact path="/request/:id" component={UserRequestPage} />
           <Route  exact path="/settings" component={Settings} />
@@ -39,18 +49,23 @@ const Main = (props) =>{
           <Route  exact path="/explore" component={ExplorePage} />
           <Route  exact path="/request" component={RequestForm} />
           <Route  exact path="/allRequest" component={AllRequestPage} />
-          <Route  exact path="/signin" component={SignIn} />
-          <Route  exact path="/signup" component={SignUp} />
           <Route  exact path="/profile/:id" component={OthersProfile} />
           <Route  exact path="/video/:id" component={video} />
-
-
+      </VideoContext>
+      </Then>
+      <Else>
+      <Route  exact path="/signin" component={SignIn} />
+      <Route  exact path="/signup" component={SignUp} />
+        <LandingPage/>
+      </Else>
+      </If>
         </Switch>
       </Router>
-      </VideoContext>
-      </LoginContext>
+      {/* </LoginContext> */}
         </>
+
     )
+
 }
 
 

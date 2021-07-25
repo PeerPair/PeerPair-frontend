@@ -40,13 +40,14 @@ const fetchUpdRequest = async (updReq) =>{
         let result = await res.json();
         console.log(result, 'update request result');
         // setRedirect(`${props.Provider._id}`);
-        setRedirect('/');
-        return result;
+        // setRedirect('/');
+        // return result;
+        props.updateData(result)
       }
 
         return (
             <>
-            <When condition={redirect}><Redirect to={redirect}></Redirect></When>
+            {/* <When condition={redirect}><Redirect to={redirect}></Redirect></When> */}
               <Button variant='primary' onClick={handleShow}>edit</Button>
               <Modal
                 show={show}

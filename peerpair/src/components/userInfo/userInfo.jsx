@@ -1,11 +1,9 @@
 import React,{ useEffect } from 'react';
 import { connect } from 'react-redux';
 import { getUserInfo } from '../../store/userInfo/action.js';
-import { useEffect } from "react";
 import {If,Else,Then} from 'react-if';
 import Avatar from 'react-avatar';
 import UpdateUserInfo from '../updateUserInfo/updateUserInfo.jsx';
-
 
 const UserInfo = (props) =>{
   useEffect(() => {
@@ -18,7 +16,7 @@ const UserInfo = (props) =>{
   if(data){
         return (
             <> 
-              <UpdateUserInfo Provider={data}/>         
+              <UpdateUserInfo Provider={props.info.userInfo} />         
               <h4>User Info here</h4>
               <If condition={data.profile_image}>
               <Then>
