@@ -20,7 +20,6 @@ const OtherRequestDetails = (props) =>{
     }, [location]);
     console.log(location.pathname,'location');
     return location.pathname ;
-     
   }
   const contextType = useContext(LoginContext);
   const [data, setData]= useState({submitters:[]});
