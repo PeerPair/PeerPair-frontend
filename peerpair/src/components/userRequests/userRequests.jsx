@@ -2,6 +2,7 @@ import React from 'react';
 import { Link  } from 'react-router-dom';
 import{Card,Button } from 'react-bootstrap';
 import { useEffect,useState } from "react";
+import { If,Then,Else } from 'react-if';
 import cookie from 'react-cookies';
 const token = cookie.load('auth');
 
@@ -40,6 +41,16 @@ const YourRequests = (props) =>{
               return (<Card className="text-center">
               <Card.Header >{(val.accepted)?'Closed':'Open'}</Card.Header>
               <Card.Body>
+                <If condition={val.image}>
+                  <Then>
+                  <img alt='requestImage'style={{width:'30%'}} src={`data:image/jpg;base64,${val.image}`} />
+
+                  </Then>
+                  <Else>
+                  <img alt='requestImage' src='https://filestage.io/wp-content/uploads/2021/06/request-for-approval-1.png'/>
+
+                  </Else>
+                </If>
                 <Card.Title style={{wordSpacing:'10px'}}>{val.keyword.toUpperCase()}</Card.Title>
                 <Card.Text>
                   {val.description}

@@ -1,10 +1,12 @@
 import React from 'react';
-import { Link, Redirect} from 'react-router-dom';
+import {  Redirect} from 'react-router-dom';
 import { LoginContext } from '../../context/authContext';
 import { useState } from 'react';
 import { useContext } from 'react';
 import { Button, Form, Alert } from 'react-bootstrap';
-import {When} from 'react-if'
+import { If,Then,Else } from 'react-if';
+import {When} from 'react-if';
+import Avatar from 'react-avatar';
 
 
 function SignUp(props){
@@ -18,10 +20,26 @@ function SignUp(props){
   const [location, setLocation] = useState('');
   const [education, setEducation] = useState('');
 
+  const validExtensions=['jpg', 'jpeg', 'png'];
   const [email, setEmail] = useState('');
+  const [baseImage,setBaseImage]=useState(null);
+  const changeHandle = (e) => {
+    let file = e.target.files[0];
+    let extension = file.name.split('.').pop().toLowerCase()
+    const handlereader = (reader) => {
+      let binaryString = reader.target.result;
+      let string = btoa(binaryString);
+      setBaseImage(string);
+    };
+    if (file && validExtensions.includes(extension)) {
+      console.log(file);
+      const reader = new FileReader();
+      console.log(reader);
+      reader.onload = handlereader;
+      reader.readAsBinaryString(file);
+    }
 
-  const [role, setRole] = useState('user');
-
+  };
   const handleChange = (e) => {
     if (e.target.name === 'firstName') {
         setFirstName(e.target.value);
@@ -42,14 +60,12 @@ function SignUp(props){
         setLocation(e.target.value);
       } else if (e.target.name === 'education') {
         setEducation(e.target.value);
-      } else {
-      setRole(e.target.value);
-    }
+      }
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    contextType.signUp(firstName, lastName, email, password, role, interests, age, user_bio, location, education );
+    contextType.signUp(firstName, lastName, email, password, interests, age, user_bio, location, education,baseImage );
   };
 
     return(
@@ -144,6 +160,27 @@ function SignUp(props){
               type="text"
               placeholder="Education"
             />
+          </Form.Group>
+          <Form.Group controlId="formBasicPassword">
+            <Form.Label>Profile Picture</Form.Label>
+            <Form.Control
+              onChange={changeHandle}
+              name="profile_image"
+              type="file"
+              accept=".jpg, .jpeg, .png"
+              required
+
+            />
+            <If condition={baseImage}>
+              <Then>
+              <button type='button' onClick={()=>{setBaseImage(null);}}>X</button>
+
+            <img alt='profileImage' style={{width:'30%'}} src={`data:image/jpg;base64,${baseImage}`} />
+              </Then>
+              <Else>
+          <Avatar name={firstName + '' + lastName} maxInitials={2}/>
+              </Else>
+            </If>
           </Form.Group>
         <Button variant="info" type='submit'>
         {/* <Link to='/signin'> */}
