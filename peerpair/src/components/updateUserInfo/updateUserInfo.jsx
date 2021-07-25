@@ -44,7 +44,6 @@ const UpdateUserInfo = (props) =>{
         return result;
       }
 
-
   return (
       <>
         <When condition={redirect}><Redirect to={redirect}></Redirect></When>
@@ -66,14 +65,6 @@ const UpdateUserInfo = (props) =>{
                   <Form.Group>
                       <Form.Label>Last Name</Form.Label>
                       <Form.Control name='last_name' type='text' defaultValue={props.Provider.last_name} onChange={changeHandle}></Form.Control>
-                  </Form.Group>
-                  <Form.Group>
-                      <Form.Label>Email</Form.Label>
-                      <Form.Control name='email' type='email' defaultValue={props.Provider.email} onChange={changeHandle}></Form.Control>
-                  </Form.Group>
-                  <Form.Group>
-                      <Form.Label>Password</Form.Label>
-                      <Form.Control name='password' type='password' defaultValue={props.Provider.password} onChange={changeHandle}></Form.Control>
                   </Form.Group>
                   <Form.Group>
                       <Form.Label>Age</Form.Label>
