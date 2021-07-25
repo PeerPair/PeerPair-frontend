@@ -29,9 +29,9 @@ const SearchResultRequest = (props) =>{
   //       //  ownersArray.push(owner)
   //   }
   // }, []);
-  useEffect(()=>{
-    getReqOwner(props.Provider[0].user_ID);
-  }, []);
+  // useEffect(()=>{
+  //   getReqOwner(props.Provider.user_ID);
+  // }, []);
   console.log('REQUEST OWNER ID', props.Provider)
   
 
@@ -58,7 +58,7 @@ const SearchResultRequest = (props) =>{
             {results.map((element,i) => 
               <ul key={i}>
               {/* <h4>{ownersArray[i].first_name} {ownersArray[i].last_name}</h4> */}
-              <h4>{owner.first_name} {owner.last_name}</h4>
+              {/* <h4>{owner.first_name} {owner.last_name}</h4> */}
               <h6>{element.keyword}</h6>
               <h6>{element.category}</h6>
               <h6>{element.description}</h6>
