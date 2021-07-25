@@ -4,7 +4,7 @@ import Header from '../header/header.jsx';
 import UserRequestPage from '../../pages/userRequest.jsx';
 import Settings from '../settings/settings.jsx';
 import Notification from '../notification/notification.jsx';
-import Search from '../searchBar/searchBar.jsx';
+import Search from '../searchForm-PLAN B/searchForm.jsx';
 import ExplorePage from '../../pages/explore.jsx';
 import UserProfilePage from '../../pages/home.jsx';
 import RequestForm from '../createRequestForm/createRequestForm.jsx';
