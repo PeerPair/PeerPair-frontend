@@ -52,12 +52,12 @@ const login = async(email, password)=>{
      console.log('loggedOut')
     setLoginState(false, null, {}, true);
   };
-  const signUp = async(first_name, last_name, email, password)=>{
+  const signUp = async(first_name, last_name, email, password, interests, age, user_bio, location, education,profile_image )=>{
     console.log('RESPONSE===', first_name, last_name, email, password)
         try{
           console.log('hhhhhhh')
         
-        const response = await superagent.post(`${process.env.REACT_APP_API_URL}/signup`, {first_name, last_name, email, password });
+        const response = await superagent.post(`${process.env.REACT_APP_API_URL}/signup`, {first_name, last_name, email, password,interests,age,user_bio,location,education,profile_image });
         validateToken(response.body.token);
         console.log('response.body.token', response.body.token)
 
