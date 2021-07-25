@@ -25,8 +25,13 @@ const OtherRequestDetails = (props) =>{
   const contextType = useContext(LoginContext);
   const [data, setData]= useState({submitters:[]});
   const [owner, setOwner] = useState([]);
+  
   useEffect(() => {
-    props.getUserInfo();
+    const test = async()=>{
+     await  props.getUserInfo();
+    getOthersReq();
+    }
+    test();
   }, []);
 
 
@@ -34,10 +39,6 @@ console.log('THE REQUEST ID IS ****', data._id)
 useEffect(()=>{
   getReqOwner(data.user_ID);
 }, [data]);
-
-useEffect(()=>{
-  getOthersReq();
-}, []);
 
 const user = props.info.userInfo.usertData;
 console.log('USER DATA===>', user);
@@ -67,10 +68,9 @@ async function getReqOwner(id){
 async function handleSubmit(reqId){
   try {
     const token = cookie.load('auth');
-    const response = await superagent.put(`${API}/submit/${reqId}`).set({'Authorization' : 'Bearer '+ token}).send({id : user._id});
-    console.log('SUBMIT REQUEST RESPONSE', response)
-    window.location.reload(false);
-    return await response.body
+    const response = await superagent.put(`${API}/submit/${reqId}`).set({'Authorization' : 'Bearer '+ token}).send({id : props.info.userInfo.usertData._id});
+    console.log('SUBMIT REQUEST RESPONSE', response);
+    return await setData(response.body);
   }catch(error){
     console.log('Failed To Submit To The Request ', error.message)
   }
@@ -78,10 +78,9 @@ async function handleSubmit(reqId){
 async function handleUnSubmit(reqId){
   try {
     const token = cookie.load('auth');
-    const response = await superagent.put(`${API}/unsubmit/${reqId}`).set({'Authorization' : 'Bearer '+ token}).send({id : user._id});
+    const response = await superagent.put(`${API}/unsubmit/${reqId}`).set({'Authorization' : 'Bearer '+ token}).send({id : props.info.userInfo.usertData._id});
     console.log('SUBMIT REQUEST RESPONSE', response)
-    window.location.reload(false);
-    return await response.body
+    return await setData(response.body);
   }catch(error){
     console.log('Failed To UN-Submit To The Request ', error.message)
 }
@@ -94,7 +93,7 @@ async function handleUnSubmit(reqId){
         return (
             <>
             <h3>Request Owner Information</h3>
-            <img src="http://via.placeholder.com/200x200" alt="placeHolder" />
+            <Link to={`/profile/${data.user_ID}`} ><img src="http://via.placeholder.com/200x200" alt="placeHolder" /></Link>
              <h4>{owner.first_name} {owner.last_name}
              </h4>
              <If condition={data.accepted === true}>
@@ -110,7 +109,7 @@ async function handleUnSubmit(reqId){
              <p>Category: {data.category}</p>
              <p>Description: {data.description}</p>
              <p>Created_date: {data.created_date}</p>
-            <If condition={data.submitters.includes(user._id)}>
+            <If condition={data.submitters.includes(props.info.userInfo.usertData._id)}>
               <Then>
           <button onClick={()=> 
                 handleUnSubmit(data._id)}> 

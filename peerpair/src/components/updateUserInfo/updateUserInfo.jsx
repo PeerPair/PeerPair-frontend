@@ -3,7 +3,10 @@ import { Button,Modal,Form} from 'react-bootstrap';
 import { Redirect } from 'react-router-dom';
 import { When } from 'react-if';
 import cookie from 'react-cookies';
+import {useDispatch} from 'react-redux';
+
 const token = cookie.load('auth');
+
 
 
 const UpdateUserInfo = (props) =>{
@@ -14,6 +17,7 @@ const UpdateUserInfo = (props) =>{
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
+  let dispatch = useDispatch();
 
   const changeHandle = e =>{
     setUpdProfile({...profile,[e.target.name]:e.target.value})
@@ -27,7 +31,7 @@ const UpdateUserInfo = (props) =>{
   // Fetch Request to update it
   const fetchUpdProfile = async (updPro) =>{
     console.log('click',updPro);
-    let res = await fetch(`${process.env.REACT_APP_API_URL}/updateInfo/${props.Provider._id}`,{
+    let res = await fetch(`${process.env.REACT_APP_API_URL}/updateInfo/${props.Provider.usertData._id}`,{
       method: 'PUT',
       body: JSON.stringify(updPro),
       headers: {
@@ -39,14 +43,14 @@ const UpdateUserInfo = (props) =>{
 
         let result = await res.json();
         console.log(result, 'update profile result');
-        // setRedirect(`${props.Provider._id}`);
-        setRedirect('/');
-        return result;
+        dispatch({type: 'get',
+        payload:{...props.Provider, usertData : result.userID},
+      })
       }
 
   return (
       <>
-        <When condition={redirect}><Redirect to={redirect}></Redirect></When>
+        {/* <When condition={redirect}><Redirect to={redirect}></Redirect></When> */}
               <Button variant='primary' onClick={handleShow}>edit</Button>
               <Modal
                 show={show}

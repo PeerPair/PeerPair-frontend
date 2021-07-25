@@ -5,7 +5,6 @@ import {If,Else,Then} from 'react-if';
 import Avatar from 'react-avatar';
 import UpdateUserInfo from '../updateUserInfo/updateUserInfo.jsx';
 
-
 const UserInfo = (props) =>{
   useEffect(() => {
     props.getUserInfo();
@@ -17,7 +16,7 @@ const UserInfo = (props) =>{
   if(data){
         return (
             <> 
-              <UpdateUserInfo Provider={data}/>         
+              <UpdateUserInfo Provider={props.info.userInfo} />         
               <h4>User Info here</h4>
               <If condition={data.profile_image}>
               <Then>
