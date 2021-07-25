@@ -1,18 +1,23 @@
-import React from 'react';
+import React,{ useEffect,useState } from 'react';
 import { useLocation} from 'react-router';
 import { connect } from 'react-redux';
+import { Redirect ,Link } from 'react-router-dom';
+import { When } from 'react-if';
 import { getUserInfo } from '../../store/userInfo/action.js';
 import RequestSubmitters from '../submitters/submitters.jsx';
-import { useEffect,useState } from "react";
 import cookie from 'react-cookies';
 import OtherUserRequest from '../otherRequestDetails/otherRequestDetails'
-import { Button } from 'react-bootstrap';
+import { Button,Alert,Spinner } from 'react-bootstrap';
+import UpdateRequest from '../updateRequest/updateRequest.jsx';
 const token = cookie.load('auth');
   
 //when the user want to view details for request
 const RequestDetails = (props) =>{
     console.log(props,'props here');
     const [request, setRequest] = useState([{}]);
+    const [okay,setStatus] = useState(true);
+    const [redirect,setRedirect] = useState(null);
+    const [loading,setLoading] = useState(false);
 
     useEffect(() => {
       const getRequest = async () => {
@@ -60,6 +65,7 @@ const RequestDetails = (props) =>{
 
   // delete request
   const deleteRequest = async (e) => {
+    setLoading(true);
     const res = await fetch(`${process.env.REACT_APP_API_URL}/request/${e.target.value}`, {
       method: 'DELETE',
       headers: {
@@ -68,6 +74,9 @@ const RequestDetails = (props) =>{
         'Authorization': 'Bearer ' + token,
       }
     })
+    setLoading(false);
+    if(!res.ok) setStatus(false)
+    else setRedirect('/')
   }
    
   const result = props.info.userInfo;
@@ -78,6 +87,7 @@ const RequestDetails = (props) =>{
     if(request[0].user_ID === id){
           return (
               <>
+                <When condition={redirect}><Redirect to={redirect}></Redirect></When>
                 <h4>Request Details For Owner here</h4>
                 <div>
                   <h4>{result.usertData.first_name} {result.usertData.last_name}</h4>
@@ -91,10 +101,12 @@ const RequestDetails = (props) =>{
                   <p>{request[0].created_date}</p>
                   <p>{request[0].description}</p>
                   {(request[0].accepted)?<Button onClick={deleteRequest} value={request[0]._id}>delete</Button>:
-                  <li><Button>edit</Button>
+                  <li><UpdateRequest Provider={request[0]}/>
                   <Button onClick={deleteRequest} value={request[0]._id}>delete</Button></li>}
                 </div>
                 <RequestSubmitters Provider={request[0]}/>
+                <When condition={loading}><Spinner animation="border" role="status"></Spinner></When>
+                <When condition={!okay}>  <Alert  variant='danger'>something went wrong</Alert></When>
               </>
           )
         }
