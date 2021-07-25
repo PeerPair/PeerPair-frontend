@@ -100,8 +100,8 @@ const RequestDetails = (props) =>{
                   <h6>Category | {request[0].category}</h6>
                   <p>{request[0].created_date}</p>
                   <p>{request[0].description}</p>
-                  {(request[0].accepted)?<Button onClick={deleteRequest} value={request[0]._id}>delete</Button>:
-                  <li><UpdateRequest Provider={request[0]}/>
+                  {(request[0].accepted) ? <Button disabled>delete</Button> :
+                  <li><UpdateRequest Provider={request[0]} updateData={(data)=> setRequest([data]) }/>
                   <Button onClick={deleteRequest} value={request[0]._id}>delete</Button></li>}
                 </div>
                 <RequestSubmitters Provider={request[0]}/>
@@ -113,22 +113,7 @@ const RequestDetails = (props) =>{
         else {
           return (
               <>
-              {/* <div>Hi</div> */}
               <OtherUserRequest data={request}/>
-                {/* <h4>Request Details For Other here</h4>
-                <div>
-                  <h4>{result.usertData.first_name} {result.usertData.last_name}</h4>
-                  <h6>{result.usertData.location}</h6>
-                  <h4>{result.usertData.peers} + Pairs</h4>
-                </div>
-                <hr></hr>
-                <div>
-                  <h4>{request[0].keyword}</h4>
-                  <h6>Category | {request[0].category}</h6>
-                  <p>{request[0].created_date}</p>
-                  <p>{request[0].description}</p>
-                  <h6>{(request[0].accepted)?'Closed':<Button>Submit</Button>}</h6>
-                </div> */}
               </>
           )
         }

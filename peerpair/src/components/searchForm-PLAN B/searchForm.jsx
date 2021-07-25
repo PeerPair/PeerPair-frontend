@@ -14,17 +14,17 @@ const SearchForm = (props)=>{
     const [render, setRender] = useState(false);
 
     let formData;
-    const submitHandler = (e)=>{
+    const submitHandler = async(e)=>{
         e.preventDefault();
         formData = {keyword, category};
         console.log('THE BODY IS ===>', formData);
-        getSearchResults(formData);
+        await getSearchResults(formData);
         setRender(true);
     }
     async function getSearchResults(formData){
         try{
             const token = cookie.load('auth');
-            const response = await fetch(`${API}/search/`,{
+            const response = await fetch(`${API}/search`,{
                 method: 'post',
                 headers: {
                     'Accept': 'application/json',

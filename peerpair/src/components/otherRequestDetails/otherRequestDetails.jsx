@@ -7,7 +7,8 @@ import { useContext } from 'react';
 import { LoginContext } from '../../context/authContext';
 import { getUserInfo } from '../../store/userInfo/action.js';
 import { connect } from 'react-redux';
-import { useLocation } from 'react-router';
+import { Redirect, useLocation } from 'react-router';
+import { Link } from 'react-router-dom';
 
 const API = process.env.REACT_APP_API_URL;
 
@@ -63,9 +64,31 @@ async function getReqOwner(id){
               console.log('Failed To Get The Request User Data', error.message)
           }
 }
-console.log('signedIn User id',user._id );
-console.log('request User id',data.user_ID );
-console.log('THE SUBMITTERS ARRAY', data.submitters)
+async function handleSubmit(reqId){
+  try {
+    const token = cookie.load('auth');
+    const response = await superagent.put(`${API}/submit/${reqId}`).set({'Authorization' : 'Bearer '+ token}).send({id : user._id});
+    console.log('SUBMIT REQUEST RESPONSE', response)
+    window.location.reload(false);
+    return await response.body
+  }catch(error){
+    console.log('Failed To Submit To The Request ', error.message)
+  }
+}
+async function handleUnSubmit(reqId){
+  try {
+    const token = cookie.load('auth');
+    const response = await superagent.put(`${API}/unsubmit/${reqId}`).set({'Authorization' : 'Bearer '+ token}).send({id : user._id});
+    console.log('SUBMIT REQUEST RESPONSE', response)
+    window.location.reload(false);
+    return await response.body
+  }catch(error){
+    console.log('Failed To UN-Submit To The Request ', error.message)
+}
+}
+// console.log('signedIn User id',user._id );
+// console.log('request User id',data.user_ID );
+// console.log('THE SUBMITTERS ARRAY', data.submitters)
 
 // if(data){
         return (
@@ -89,10 +112,13 @@ console.log('THE SUBMITTERS ARRAY', data.submitters)
              <p>Created_date: {data.created_date}</p>
             <If condition={data.submitters.includes(user._id)}>
               <Then>
-          <button>Un-Submit</button>
+          <button onClick={()=> 
+                handleUnSubmit(data._id)}> 
+            Un-Submit</button>
              </Then>
              <Else>
-             <button>Submit</button>
+             
+             <button onClick={()=> handleSubmit(data._id)}>Submit</button>
              </Else>
              </If>
             </>
