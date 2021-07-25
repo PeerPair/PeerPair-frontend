@@ -13,15 +13,18 @@ import AllRequestPage from '../../pages/allRequest.jsx';
 import SignIn from '../signIn/signIn.jsx';
 import SignUp from '../signUp/signUp.jsx';
 import LoginContext from '../../context/authContext';
+import VideoContext from '../../context/video';
 import Chat from '../../pages/chat.jsx';
 // import Login from './components/todo/logIn';
 import OthersProfile from '../othersProfile/othersProfile'
+import video from '../../pages/video.jsx';
 
 
 const Main = (props) =>{
   return (
       <>
       <LoginContext>
+      <VideoContext>
       <Router>
         <Header/>
         <Switch>
@@ -39,10 +42,12 @@ const Main = (props) =>{
           <Route  exact path="/signin" component={SignIn} />
           <Route  exact path="/signup" component={SignUp} />
           <Route  exact path="/profile/:id" component={OthersProfile} />
+          <Route  exact path="/video/:id" component={video} />
 
 
         </Switch>
       </Router>
+      </VideoContext>
       </LoginContext>
         </>
     )
