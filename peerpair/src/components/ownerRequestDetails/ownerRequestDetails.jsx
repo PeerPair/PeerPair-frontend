@@ -2,7 +2,7 @@ import React,{ useEffect,useState } from 'react';
 import { useLocation} from 'react-router';
 import { connect } from 'react-redux';
 import { Redirect ,Link } from 'react-router-dom';
-import { When } from 'react-if';
+import { When ,If,Then,Else} from 'react-if';
 import { getUserInfo } from '../../store/userInfo/action.js';
 import RequestSubmitters from '../submitters/submitters.jsx';
 import cookie from 'react-cookies';
@@ -14,7 +14,7 @@ const token = cookie.load('auth');
 //when the user want to view details for request
 const RequestDetails = (props) =>{
     console.log(props,'props here');
-    const [request, setRequest] = useState([{}]);
+    const [request, setRequest] = useState([{submitters:[]}]);
     const [okay,setStatus] = useState(true);
     const [redirect,setRedirect] = useState(null);
     const [loading,setLoading] = useState(false);
@@ -84,7 +84,6 @@ const RequestDetails = (props) =>{
   let id = result.usertData._id;
   console.log(id,'****id****');
   
-    if(request[0].user_ID === id){
           return (
               <>
                 <When condition={redirect}><Redirect to={redirect}></Redirect></When>
@@ -104,19 +103,17 @@ const RequestDetails = (props) =>{
                   <li><UpdateRequest Provider={request[0]} updateData={(data)=> setRequest([data]) }/>
                   <Button onClick={deleteRequest} value={request[0]._id}>delete</Button></li>}
                 </div>
-                <RequestSubmitters Provider={request[0]}/>
+                
+                   
+                <RequestSubmitters updateData={(data)=> setRequest([data])} Provider={request[0]}/>
+
+                
+              
                 <When condition={loading}><Spinner animation="border" role="status"></Spinner></When>
                 <When condition={!okay}>  <Alert  variant='danger'>something went wrong</Alert></When>
               </>
           )
-        }
-        else {
-          return (
-              <>
-              <OtherUserRequest data={request}/>
-              </>
-          )
-        }
+
 
   }
 
