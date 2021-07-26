@@ -11,20 +11,18 @@ const RequestSubmitters = (props) =>{
 
     useEffect(() => {
       const getSubmitterInfo = async () => {
-        const requestSubmitterFromAPI = await fetchSubmitter();
-        setSubmitter(requestSubmitterFromAPI);
+       const allDataInfo = await fetchSubmitter();
+       setSubmitter(allDataInfo);
     }
     getSubmitterInfo()
-  }, [])
+  }, [ props.Provider])
 
 
   // Fetch Submitter Profile to render submitter info 
   let results;
   const fetchSubmitter = async () => {
-    let data;
-    // props.Provider.submitters.map((val,idx)=>{
-      results = async () =>{
-        for (let index = 0; index < props.Provider.submitters.length; index++) {
+        let allData=[];
+         for (let index = 0; index < props.Provider.submitters.length; index++) {
           const res = await fetch(`${process.env.REACT_APP_API_URL}/profile/${props.Provider.submitters[index]}`,{
               method: 'GET',
               headers: {
@@ -33,15 +31,16 @@ const RequestSubmitters = (props) =>{
                 'Authorization': 'Bearer ' + token,
               }
           })
-          data = await res.json();
+          const data = await res.json();
           console.log(data, 'get Submitter Info');
-          return dataResult.push(data);
+          allData.push(data);
         }   
+        return allData;
         }
         
     // })
-    console.log(await results(),'results');
-  }
+
+  
 
   // Fetch Request Submitter to delete chosen submitter
   const fetchRequestSubmitter = async (e) =>{
@@ -57,6 +56,7 @@ const RequestSubmitters = (props) =>{
   })
           let data = await res.json();
           console.log(data, 'delete Submitter');
+          
           return data;
   }
 
@@ -77,6 +77,7 @@ const RequestSubmitters = (props) =>{
      })
           let data = await res.json();
           console.log(data, 'Cancel Accept Submitter');
+          props.updateData(data);
           return data;
     }
   //for accept submitter
@@ -92,17 +93,18 @@ const RequestSubmitters = (props) =>{
      })
           let data = await res.json();
           console.log(data, 'Accept Submitter');
+          props.updateData(data);
+
           return data;
     }
 }
 
-  console.log(dataResult,'subInfo');
-  if(props.Provider.submitters.length >= 1){
+  console.log(submitterInfo,'subInfo');
         return (
             <>
               <h4>Request Submitters here</h4>
               <ul>
-              {dataResult.map((submitter,idx)=>{
+              {submitterInfo.map((submitter,idx)=>{
                 return(
                 <li>
                 <h4>{submitter.first_name} {submitter.last_name}</h4>
@@ -117,9 +119,6 @@ const RequestSubmitters = (props) =>{
             </>
         )
       }
-         else return (
-        <h3>Oops Still No Submitter</h3>
-      )
-}
+        
 
 export default RequestSubmitters;

@@ -22,6 +22,7 @@ import {LoginContext} from '../../context/authContext';
 import { useContext } from 'react';
 import { If, Then, Else } from 'react-if';
 import LandingPage from '../../pages/landing'
+import Chatlist from '../../pages/chatlist.jsx';
 
 
 
@@ -50,6 +51,7 @@ const Main = (props) =>{
           <Route  exact path="/request" component={RequestForm} />
           <Route  exact path="/allRequest" component={AllRequestPage} />
           <Route  exact path="/profile/:id" component={OthersProfile} />
+          <Route  exact path="/chat" component={Chatlist} />
           <Route  exact path="/video/:id" component={video} />
       </VideoContext>
       </Then>
