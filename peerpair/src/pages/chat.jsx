@@ -11,7 +11,6 @@ import Video from './video.jsx';
 import { VideoContext } from '../context/video.js';
 import InputEmoji from "react-input-emoji";
 import {Button} from 'react-bootstrap';
-import '../design/reset.css';
 import '../design/chat.css';
 
 const socket = io(process.env.REACT_APP_API_URL);

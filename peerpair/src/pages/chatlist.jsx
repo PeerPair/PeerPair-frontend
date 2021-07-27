@@ -3,7 +3,6 @@ import { If,Then,Else } from 'react-if';
 import Avatar from 'react-avatar';
 import { Link } from 'react-router-dom';
 import cookie from 'react-cookies'
-import '../design/reset.css';
 import '../design/chatList.css';
 
 const Chatlist = () => {

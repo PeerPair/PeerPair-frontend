@@ -8,6 +8,8 @@ import cookies from 'react-cookies';
 import './navbar.css';
 import { Notifications } from '@material-ui/icons';
 import { FaUser, FaCog, FaCompass , FaBell , FaEnvelope } from 'react-icons/fa';
+import { Icon } from "@iconify/react";
+import signOut from "@iconify-icons/uil/sign-out-alt";
 
 // import './navbar.scss'
 const Navbar = (props) => {
@@ -43,7 +45,11 @@ const Navbar = (props) => {
   return (
     <nav className="mynav">
       <ul className="icons">
-        <li><Link to="#"><FaCog color="#333333" size={23}/></Link>
+      {/* <div className="category-icon">
+            <Icon icon={signOut} />
+          </div> */}
+        <li><div> <Icon icon={signOut} onClick={contextType.logout} type='button' />
+         </div>
 </li>
         <li> <Link to="/"><FaUser color="#333333" size={23}/></Link> </li>
         <li> <Link to="/explore"><FaCompass color="#333333" size={23}/></Link> </li>
