@@ -7,9 +7,15 @@ import { LoginContext } from '../../context/authContext';
 import cookies from 'react-cookies';
 import './navbar.css';
 import { Notifications } from '@material-ui/icons';
-import { FaUser, FaCog, FaCompass , FaBell , FaEnvelope } from 'react-icons/fa';
+import { FaUser, FaCog, FaCompass , FaBell , FaEnvelope  } from 'react-icons/fa';
 import { Icon } from "@iconify/react";
 import signOut from "@iconify-icons/uil/sign-out-alt";
+import ExitToAppIcon from '@material-ui/icons/ExitToApp';
+import ChatIcon from '@material-ui/icons/Chat';
+import SearchIcon from '@material-ui/icons/Search';
+import {getNotifications} from '../../store/notification/reducer'
+import { connect } from 'react-redux';
+
 
 // import './navbar.scss'
 const Navbar = (props) => {
@@ -18,6 +24,13 @@ const Navbar = (props) => {
     newMessages: [],
     all: [],
   });
+  useEffect(()=>{
+    const getNotification= async()=>{
+      await props.getNotifications();
+      console.log('THE NOTIFICATION REDUCER RESULTS', props.NotificationResults )
+    }
+    getNotification();
+  },[]);
   
   const contextType = useContext(LoginContext);
   useEffect(() => {
@@ -48,11 +61,18 @@ const Navbar = (props) => {
       {/* <div className="category-icon">
             <Icon icon={signOut} />
           </div> */}
-        <li><div> <Icon icon={signOut} onClick={contextType.logout} type='button' />
+        <li><div> 
+          <ExitToAppIcon onClick={contextType.logout} type='button'> </ExitToAppIcon>
+          {/* <Icon icon={ExitToAppIcon} onClick={contextType.logout} type='button' /> */}
          </div>
 </li>
         <li> <Link to="/"><FaUser color="#333333" size={23}/></Link> </li>
         <li> <Link to="/explore"><FaCompass color="#333333" size={23}/></Link> </li>
+        <li>
+            <a href='/search'>
+            <SearchIcon></SearchIcon>
+         </a> 
+          </li>
         <li> <Dropdown className="d-inline mx-2">
           <Dropdown.Toggle  as={'div'} id="dropdown-autoclose-true">
             <Notifications />
@@ -80,13 +100,24 @@ const Navbar = (props) => {
             }).reverse()}
           </Dropdown.Menu>
         </Dropdown> </li>
-        <li> <Link to="/chat"><FaEnvelope color="#333333" size={23}/> </Link> </li>
+        <li> 
+         <Link to='/chat/:id'>
+         <ChatIcon></ChatIcon>
+         </Link> 
+          </li>
+         
       </ul>
     </nav>
   )
 };
+const mapStateToProps = state => ({
+  NotificationResults : state.notificationReducer,
+});
 
-export default Navbar;
+const mapDispatchToProps = {getNotifications};
+export default connect(mapStateToProps,mapDispatchToProps)(Navbar)
+
+// export default Navbar;
 
 
 

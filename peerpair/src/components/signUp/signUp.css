@@ -58,9 +58,9 @@ label.MuiButtonBase-root.MuiButton-root.MuiButton-contained {
   height: 100vh;
 }
 
-.MuiFormLabel-root.MuiInputLabel-root.MuiInputLabel-formControl.MuiInputLabel-animated.MuiInputLabel-outlined.Mui-required.Mui-required {
+/* .MuiFormLabel-root.MuiInputLabel-root.MuiInputLabel-formControl.MuiInputLabel-animated.MuiInputLabel-outlined.Mui-required.Mui-required {
   margin-top: 10px;
-}
+} */
 
 label.MuiButtonBase-root.MuiButton-root.MuiButton-contained {
   border-radius: 30px;

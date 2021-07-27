@@ -46,7 +46,7 @@ const Main = (props) =>{
           <Route  exact path="/settings" component={Settings} />
           <Route  exact path="/notification" component={Notification} />
           {/* <Route  exact path="/chat/:id" component={Chat} /> */}
-          <Route  exact path="/search" component={Search} />
+          <Route  exact path="/search" render={()=><Search/>} />
           <Route  exact path="/searchResult" component={SearchResultsPage} />
           <Route  exact path="/explore" component={ExplorePage} />
           <Route  exact path="/request" component={RequestForm} />

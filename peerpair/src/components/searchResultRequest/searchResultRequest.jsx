@@ -11,7 +11,7 @@ import { getUserInfo } from '../../store/userInfo/action.js';
 import { connect } from 'react-redux';
 import {getOthersProfile} from '../../store/othersProfile/reducer';
 import { Link } from 'react-router-dom';
-import "../../pages/reset.css";
+// import "../../pages/reset.css";
 
 const API = process.env.REACT_APP_API_URL;
 let idArray = [];
@@ -58,8 +58,8 @@ const SearchResultRequest = (props) =>{
         return (
           <>
           <style>{'body { background-color: #EDE3FA; }'}</style>
-          <Navbar />
-          <TopBanner />
+          {/* <Navbar />
+          <TopBanner /> */}
           <ResultsBanner>
             {ownersArray.map((val,idx)=>{
               
