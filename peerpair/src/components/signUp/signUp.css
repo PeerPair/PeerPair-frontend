@@ -1,6 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Righteous&display=swap");
 
-.logo {
+.logoy {
   position: absolute;
   top: 1.8em;
   left: 4em;
@@ -40,7 +40,7 @@ label.MuiButtonBase-root.MuiButton-root.MuiButton-contained {
   background-color: #ede3fa;
   color: rgb(50, 218, 231);
 }
-.people {
+.peopley {
   position: absolute;
   top: 7em;
   left: 4em;
@@ -52,7 +52,7 @@ label.MuiButtonBase-root.MuiButton-root.MuiButton-contained {
   flex-direction: row;
   width: 100%;
 }
-.shape {
+.shapey {
   position: fixed;
   width: 57.5vw;
   height: 100vh;

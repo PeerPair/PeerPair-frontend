@@ -65,12 +65,12 @@ const SearchForm = (props)=>{
                 </select>
                 <button type='submit'>Submit</button>
             </form>
-        </>
-            </Then>
-            <Else>
+        </> 
+           </Then> 
+            <Else> 
           <SearchResultRequest Provider={data}/>
-            </Else>
-        </If>
+       </Else>
+        </If> 
     )
 }
 

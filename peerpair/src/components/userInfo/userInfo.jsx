@@ -19,13 +19,13 @@ const UserInfo = (props) =>{
   if(data){
         return (
   
-                  <aside>
+                  <aside className='ProfileAside'>
                                   <If condition={data.profile_image}>
               <Then>
               <img className="person" alt='profileImage' src={'data:image/jpg;base64,'+data.profile_image}/>
               </Then>
               <Else>
-          <Avatar className="person" name={data.first_name + ' ' + data.last_name} maxInitials={2}/>
+          <Avatar className="person" name={data.first_name + ' ' + data.last_name} maxInitials={2} size={150}/>
               </Else>
             </If>
 
@@ -70,7 +70,7 @@ const UserInfo = (props) =>{
         )
   }
   else return (
-    <aside>"is loading"</aside>
+    <aside className='ProfileAside'>"is loading"</aside>
   )
 }
 

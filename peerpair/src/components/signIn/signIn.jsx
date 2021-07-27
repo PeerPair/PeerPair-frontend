@@ -86,9 +86,9 @@ function SignIn(props){
 
 <Grid container component="main" className={classes.root}>
 <CssBaseline />
-<img className="logo" alt="shape" src={logo} />
-<img className="shape" alt="shape" src={shape} />
-<img className="people" alt="shape" src={people} />
+<img className="logoy" alt="shape" src={logo} />
+<img className="shapey" alt="shape" src={shape} />
+<img className="peopley" alt="shape" src={people} />
 <Grid item xs={false} sm={4} md={7} className={classes.image} />
 
 

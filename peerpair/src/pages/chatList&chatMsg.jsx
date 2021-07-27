@@ -1,5 +1,4 @@
 import React from 'react';
-import '../design/reset.css';
 // import '../design/chatList&chatMsg.css';
 import Chatlist from './chatlist.jsx';
 import Chat from './chat.jsx';
