@@ -9,7 +9,10 @@ function App(props) {
 
   return (
     <LoginContext>
+      <div>
+
       <Main/>
+      </div>
     </LoginContext>
   );
 }

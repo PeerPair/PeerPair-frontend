@@ -5,8 +5,11 @@ import { useContext } from 'react';
 import { Dropdown } from 'react-bootstrap';
 import { LoginContext } from '../../context/authContext';
 import cookies from 'react-cookies';
-import './navbar.scss';
+import './navbar.css';
 import { Notifications } from '@material-ui/icons';
+import { FaUser, FaCog, FaCompass , FaBell , FaEnvelope } from 'react-icons/fa';
+
+// import './navbar.scss'
 const Navbar = (props) => {
   const [redirect, setredirect] = useState(false);
   const [notify, setNotify] = useState({
@@ -38,15 +41,13 @@ const Navbar = (props) => {
   };
 
   return (
-    <>
-      <nav>
-        <button>
-          <Link to="/">home</Link>
-        </button>
-        <button>
-          <Link to="/settings">settings</Link>
-        </button>
-        <Dropdown className="d-inline mx-2">
+    <nav className="mynav">
+      <ul className="icons">
+        <li><Link to="#"><FaCog color="#333333" size={23}/></Link>
+</li>
+        <li> <Link to="/"><FaUser color="#333333" size={23}/></Link> </li>
+        <li> <Link to="/explore"><FaCompass color="#333333" size={23}/></Link> </li>
+        <li> <Dropdown className="d-inline mx-2">
           <Dropdown.Toggle  as={'div'} id="dropdown-autoclose-true">
             <Notifications />
           </Dropdown.Toggle>
@@ -72,22 +73,14 @@ const Navbar = (props) => {
               );
             }).reverse()}
           </Dropdown.Menu>
-        </Dropdown>
-        <button>
-          <Link to="/search">search</Link>
-        </button>
-        <button>
-          <Link to="/explore">explore</Link>
-        </button>
-        <button onClick={contextType.logout} type="button">
-          <Link to="/signin">LogOut</Link>
-        </button>
-      </nav>
-      <When condition={redirect}>
-        <Redirect to="/notification" />
-      </When>
-    </>
-  );
+        </Dropdown> </li>
+        <li> <Link to="/chat"><FaEnvelope color="#333333" size={23}/> </Link> </li>
+      </ul>
+    </nav>
+  )
 };
 
 export default Navbar;
+
+
+

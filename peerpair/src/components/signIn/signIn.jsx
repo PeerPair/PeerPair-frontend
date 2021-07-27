@@ -46,7 +46,7 @@ function SignIn(props){
                     Failed to LogIn 
                     </Alert>
                   </When>
-                  <When condition={contextType.loggedIn === true} >
+                  <When condition={contextType.loggedIn} >
                   <Redirect to='/'/>
                   </When>
         
