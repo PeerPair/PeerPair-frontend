@@ -10,6 +10,9 @@ import { When } from 'react-if';
 import Video from './video.jsx';
 import { VideoContext } from '../context/video.js';
 import InputEmoji from "react-input-emoji";
+import {Button} from 'react-bootstrap';
+import '../design/reset.css';
+import '../design/chat.css';
 
 const socket = io(process.env.REACT_APP_API_URL);
 const Chat = (props) => {
@@ -63,9 +66,9 @@ useEffect(() => {
         console.log(e);
       }
     };
-    getID(props.match.params.id);
+    getID(props.roomID);
     
-  }, []);
+  }, [props.roomID]);
 
   const submitHandle = (e) => {
     e.preventDefault();
@@ -123,23 +126,53 @@ const enterHandle=()=>{
   return (
     <>
 
-
-    <button onClick={loadMore}>see old message</button>
+    <main class="main">
+    <header>
+      <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/1940306/chat_avatar_01.jpg" alt=""/>
+			<div>
+				<h2>Chat with Vincent Porter</h2>
+				<h3>already 1902 messages</h3>
+			</div>
+    </header>
+    <Button  onClick={loadMore}>see old message</Button>
     <div>
-        {oldMessages.map((val,idx)=> <div key={idx}><div><b>{val.sender_name}</b></div> {val.messege} </div>)}
-        {messages.map((val,idx)=> <div key={idx}><div><b>{val.senderName}</b></div> {val.message} </div>)}
-
+    <ul id="chat">
+        {oldMessages.map((val,idx)=> 
+        <li class="you">
+          <div class="entete">
+					<span class="status green"></span>
+					<h2>{val.sender_name}</h2>
+				  </div>
+				  <div class="triangle"></div>
+				  <div class="message">{val.messege}</div>
+          {/* <div key={idx}><div><b>{val.sender_name}</b></div> {val.messege} </div> */}
+        </li>)}
+        {messages.map((val,idx)=> 
+        <li class="me">
+          <div class="entete">
+					<span class="status blue"></span>
+					<h2>{val.senderName}</h2>
+				  </div>
+				  <div class="triangle"></div>
+				  <div class="message">{val.message}</div>
+          {/* <div key={idx}><div><b>{val.senderName}</b></div> {val.message} </div> */}
+        </li>)}
+        
+    </ul>
     </div>
       <div id="message-container" class="msgContainer"></div>
-      <form onSubmit={submitHandle}>
-        <InputEmoji       value={messageText}
+      <div class="footerIcon">
+      <form  onSubmit={submitHandle}>
+        <InputEmoji class="textarea"      value={messageText}
       onChange={setMessage}
       cleanOnEnter
       onEnter={enterHandle}
-      placeholder="Type a message" />
-        <button type="submit">Send</button>
+      placeholder="Type your message" />
+        <Button type="submit">Send</Button>
       </form>
-      <Link to={`/video/${roomID}`} target='_blank' >{(context.receiveCall)?'Join':'Call'}</Link>
+      <Link to={`/video/${roomID}`} target='_blank' ><Button>{(context.receiveCall)?'Join':'Call'}</Button></Link>
+      </div>
+    </main>
     </>
   );
 };
