@@ -1,4 +1,8 @@
 import React from 'react';
+import Navbar from '../navbar/navbar';
+import TopBanner from "./topBanner";
+import OthersReqCard from '../resultCard/card';
+import ResultsBanner from '../resultBanner/banner';
 import { useState, useEffect } from "react";
 import cookie from "react-cookies";
 import { When, If, Else, Then } from "react-if";
@@ -7,6 +11,7 @@ import { getUserInfo } from '../../store/userInfo/action.js';
 import { connect } from 'react-redux';
 import {getOthersProfile} from '../../store/othersProfile/reducer';
 import { Link } from 'react-router-dom';
+import "../../pages/reset.css";
 
 const API = process.env.REACT_APP_API_URL;
 let idArray = [];
@@ -51,13 +56,21 @@ const SearchResultRequest = (props) =>{
   console.log('THE OWNERS ARRAY', ownersArray)
   // console.log('Owner ----> ', owner)
         return (
-            <>
-            {/* <When condition={loading.load}>
-              <h5>
-                Is Loading
-              </h5>
-            </When> */}
-                {results.map((element,i) => 
+          <>
+          <style>{'body { background-color: #EDE3FA; }'}</style>
+          <Navbar />
+          <TopBanner />
+          <ResultsBanner>
+            {ownersArray.map((val,idx)=>{
+              
+              return <OthersReqCard key={idx} requestData={results[idx]} owner={val}/>
+            })}
+
+          </ResultsBanner>
+            { /*   <div>
+
+            </div>*/}
+                {/* {results.map((element,i) => 
                   <ul key={i}>
                 {ownersArray.map((e, i)=>
               <ul key={i}>
@@ -77,7 +90,7 @@ const SearchResultRequest = (props) =>{
                   </ul >
                 )}
               </ul>
-                )}
+                )} */}
             </>
         )
 }

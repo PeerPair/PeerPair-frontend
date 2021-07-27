@@ -3,6 +3,7 @@ import { Button,Modal,Form} from 'react-bootstrap';
 import { Redirect } from 'react-router-dom';
 import { When } from 'react-if';
 import cookie from 'react-cookies';
+import MenuItem from '@material-ui/core/MenuItem';
 const token = cookie.load('auth');
 
 const UpdateRequest = (props) =>{
@@ -48,7 +49,8 @@ const fetchUpdRequest = async (updReq) =>{
         return (
             <>
             {/* <When condition={redirect}><Redirect to={redirect}></Redirect></When> */}
-              <Button variant='primary' onClick={handleShow}>edit</Button>
+            
+              <MenuItem variant='primary' onClick={handleShow}>Edit Request</MenuItem>
               <Modal
                 show={show}
                 onHide={handleClose}

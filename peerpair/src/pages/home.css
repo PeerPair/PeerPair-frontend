@@ -1,0 +1,148 @@
+@import url('./reset.css');
+@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,wght@0,300;1,900&family=Pacifico&display=swap');
+
+
+body{
+  font-family: 'Nunito Sans', sans-serif;
+}
+
+.profile-page{
+display: grid;
+grid-template-columns: 30% 70%;
+}
+
+.container{
+  background-image: url('../assets/backk2.jpg');
+
+}
+.content {
+  background-color: #f6f2fa;
+  height: 100vh;
+  margin: 0px;
+  /* border-radius: 1.5em 0 0 1.5em; */
+  position: relative;
+  z-index: 1;
+  border-radius: 20px 0 0 20px;
+  box-shadow: -11px 3px 23px -9px rgba(0,0,0,0.56);
+  display: grid;
+  grid-template-rows:10% 90% ;
+}
+
+aside {
+  display: grid;
+  grid-template-rows: 22% 10% 25% 20% 20% ;
+  /* background-color: #B983FF; */
+  grid-row-gap:1em;
+  background-image: url('../assets/backk222.jpg');
+  background-repeat: round;
+  position: relative;
+  transform: translateX(90%);
+  animation: slide 1s forwards;
+  border-radius: 20px 0 0 20px;
+}
+
+
+.other{
+  display: grid;
+  grid-template-columns: 30% 70%;
+}
+
+.circle {
+  position: absolute;
+  bottom: 0;
+  left:0;
+  width:21%;
+  border-radius: 1.3em ;
+  opacity: .4;
+}
+
+.edit-icon {
+position: absolute;
+top:2em;
+right:2.2em;
+}
+
+.msg {
+  position: absolute;
+  bottom: 4em;
+  left:.2em;
+  width:22%;
+  border-radius: 1.3em ;
+  animation: floating  2.5s  infinite  ease-in-out;
+}
+
+.search {
+display: grid;
+grid-template-columns: 60% 15%;
+column-gap: 10%;
+padding-top: 1.3em ;
+}
+
+
+.number{
+  position: absolute;
+left: .15em;
+bottom: .6em;
+
+  font-size: 5.5em;
+  font-family: 'Pacifico', cursive;
+color: white;
+text-shadow: 1px 2px 4px rgba(0, 0, 0, 0.77);
+}
+
+.number span:nth-child(1) {
+  font-size: .8em; 
+}
+
+.number p:nth-child(2) {
+  position: absolute;
+  left: 2.3em;
+  font-size: .3em; 
+  font-family: 'Nunito Sans', sans-serif;
+}
+
+.person {
+  position: relative;
+  margin:2em auto;
+  width:7em;
+  height: 7em;
+  border-radius: 50% 50%;
+  
+}
+
+.info {
+  text-align: center;
+  margin:1em auto;
+}
+
+
+.info p:first-child {
+  font-size: 2em;
+  margin-bottom: .2em;
+  font-weight: 600;
+}
+
+.info p:nth-child(2) {
+  font-size: .9em;
+}
+
+.bio {
+  text-align: center;
+  margin:2em auto;
+  line-height: 18px;
+  width: 80%;
+}
+
+
+@keyframes slide {
+  100% { transform: translateX(0%);
+    border-radius: 0;
+}
+}
+
+@keyframes floating {
+  from { transform: translate(0,  0px); }
+  65%  { transform: translate(0, 15px); }
+  to   { transform: translate(0, -0px); }    
+}

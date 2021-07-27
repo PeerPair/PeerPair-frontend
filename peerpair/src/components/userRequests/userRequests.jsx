@@ -4,17 +4,26 @@ import{Card,Button } from 'react-bootstrap';
 import { useEffect,useState } from "react";
 import { If,Then,Else } from 'react-if';
 import cookie from 'react-cookies';
+import ReqBanner from '../reqBanner/reqBanner';
+import RequestCard from '../reqCard/reqCard';
+import { Spinner } from 'react-bootstrap';
 const token = cookie.load('auth');
 
 
 //all created requests by the user which rendered in his own profile
 const YourRequests = (props) =>{
   const [requests, setRequests] = useState([])
+  const [done, setDone] = useState(false)
+  const useForceUpdate = () => useState()[1];
+  const force = useForceUpdate();
 
     useEffect(() => {
       const getRequests = async () => {
         const requestsFromAPI = await fetchRequests();
         setRequests(requestsFromAPI);
+        setDone(true);
+        force();
+        
     }
     getRequests()
   }, [])
@@ -34,38 +43,25 @@ const YourRequests = (props) =>{
     return data ;
   }
   
-    if(requests){
+
+
+  return (
+      
+      <ReqBanner>
+
+
+
+      {requests.map((val,idx)=>{
         return (
-            <>
-            <h4>{requests.map((val,idx)=>{
-              return (<Card className="text-center">
-              <Card.Header >{(val.accepted)?'Closed':'Open'}</Card.Header>
-              <Card.Body>
-                <If condition={val.image}>
-                  <Then>
-                  <img alt='requestImage'style={{width:'30%'}} src={`data:image/jpg;base64,${val.image}`} />
-
-                  </Then>
-                  <Else>
-                  <img alt='requestImage' src='https://filestage.io/wp-content/uploads/2021/06/request-for-approval-1.png'/>
-
-                  </Else>
-                </If>
-                <Card.Title style={{wordSpacing:'10px'}}>{val.keyword.toUpperCase()}</Card.Title>
-                <Card.Text>
-                  {val.description}
-                </Card.Text>
-                <Link to={`/request/${val._id}`} ><Button>View Details</Button></Link>
-              </Card.Body>
-              <Card.Footer className="text-muted">{val.created_date}</Card.Footer>
-            </Card>)
-            })}</h4>
-            </>
+          <RequestCard key={idx} data={val}/>
         )
-      }
-    else return (
-      <h2>is loading</h2>
-    )
+      })}
+      </ReqBanner>
+      
+  )
 }
+      
+
+
 
 export default YourRequests;

@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { BrowserRouter as Router, Redirect, Route, Switch } from 'react-router-dom';
 import Header from '../header/header.jsx';
 import UserRequestPage from '../../pages/userRequest.jsx';
 import Settings from '../settings/settings.jsx';
@@ -30,14 +30,14 @@ const Main = (props) =>{
   const contextType = useContext(LoginContext);
   
   return (
-      <>
-      <Router>
-        <Switch>
+
+      <Router >
       <If condition={contextType.loggedIn === true}>
       <Then>
       {/* <LoginContext> */}
       <VideoContext>
-        <Header/>
+        {/* <Header/> */}
+        <Switch>
           <Route exact path="/" component={UserProfilePage}>
           {/* ()=> contextType.loggedIn == false ? <LandingPage/>  : <UserProfilePage/>  */}
           </Route>
@@ -53,18 +53,26 @@ const Main = (props) =>{
           <Route  exact path="/profile/:id" component={OthersProfile} />
           <Route  exact path="/chat" component={Chatlist} />
           <Route  exact path="/video/:id" component={video} />
+
+          
+        </Switch>
       </VideoContext>
       </Then>
       <Else>
+        <Switch>
+
       <Route  exact path="/signin" component={SignIn} />
       <Route  exact path="/signup" component={SignUp} />
-        <LandingPage/>
+      <Route exact path="/" component={LandingPage}/>
+      {/* <Route exact path="*" >
+        <Redirect to='/signin'/>
+      </Route> */}
+        </Switch>
       </Else>
       </If>
-        </Switch>
-      </Router>
       {/* </LoginContext> */}
-        </>
+      </Router>
+
 
     )
 

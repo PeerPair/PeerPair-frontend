@@ -4,6 +4,8 @@ import { Redirect } from 'react-router-dom';
 import { When } from 'react-if';
 import cookie from 'react-cookies';
 import {useDispatch} from 'react-redux';
+import { Icon } from "@iconify/react";
+import pen from "@iconify-icons/uil/pen";
 
 const token = cookie.load('auth');
 
@@ -51,7 +53,9 @@ const UpdateUserInfo = (props) =>{
   return (
       <>
         {/* <When condition={redirect}><Redirect to={redirect}></Redirect></When> */}
-              <Button variant='primary' onClick={handleShow}>edit</Button>
+        <Icon onClick={handleShow} icon={pen}  /> 
+
+              {/* <Button variant='primary' onClick={handleShow}>edit</Button> */}
               <Modal
                 show={show}
                 onHide={handleClose}
