@@ -3,12 +3,15 @@ import { useEffect,useState } from "react";
 import cookie from 'react-cookies';
 import{Card,Button } from 'react-bootstrap';
 import { Link  } from 'react-router-dom';
+import superagent from'superagent';
+import OthersReqCard from '../resultCard/card';
 const token = cookie.load('auth');
 
 
-const AllRequest = (props) =>{
-  const [allRequest, setAllRequest] = useState([])
 
+const AllRequest = (props) =>{
+  const [allRequest, setAllRequest] = useState({data:[],userInfoData:[]})
+ 
     useEffect(() => {
       const getAllRequest = async () => {
         const allRequestFromAPI = await fetchAllRequest();
@@ -30,33 +33,21 @@ const AllRequest = (props) =>{
     console.log(res,'res');
     const data = await res.json()
     console.log(data, 'get all request');
-    return data;
+    let userInfoData = [];
+    for (let i = 0; i < data.length; i++) {
+      const userData = await superagent.get(`${process.env.REACT_APP_API_URL}/profile/${data[i].user_ID}`).set({'Authorization' : 'Bearer '+ token});
+      userInfoData.push(userData.body);
+      
+    }
+    return {data,userInfoData};
   }
 
-  if(allRequest){
         return (
-            <>
-              <h4>All Request here</h4>
-              <h4>{allRequest.map((val,idx)=>{
-              return (<Card className="text-center">
-              <Card.Header >{(val.accepted)?'Closed':'Open'}</Card.Header>
-              <Card.Body>
-              <Link to={`/profile/${val.user_ID}`} ><img src="http://via.placeholder.com/200x200" alt="placeHolder" /></Link>
-                <Card.Title style={{wordSpacing:'10px'}}>{val.keyword.toUpperCase()}</Card.Title>
-                <Card.Text>
-                  {val.description}
-                </Card.Text>
-                <Link to={`/request/${val._id}`}><Button>View Details</Button></Link>
-              </Card.Body>
-              <Card.Footer className="text-muted">{val.created_date}</Card.Footer>
-            </Card>)
-            })}</h4>
-            </>
-        )
+          <>
+          {allRequest.userInfoData.map((val,idx)=><OthersReqCard key={idx} requestData={allRequest.data[idx]} owner={val}/>)}
+        </>)
       }
-    else return (
-      <h2>is loading</h2>
-    )
-}
+
+
 
 export default AllRequest;

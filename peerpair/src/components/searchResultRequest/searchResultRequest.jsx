@@ -67,30 +67,7 @@ const SearchResultRequest = (props) =>{
             })}
 
           </ResultsBanner>
-            { /*   <div>
 
-            </div>*/}
-                {/* {results.map((element,i) => 
-                  <ul key={i}>
-                {ownersArray.map((e, i)=>
-              <ul key={i}>
-                  <If condition={props.Provider[i].user_ID === element.user_ID}>
-                    <Then>
-                  <div>
-                  <Link to={`/profile/${element.user_ID}`} ><img src="http://via.placeholder.com/200x200" alt="placeHolder" /></Link>
-                  <h4>{e.first_name} {e.last_name}</h4>
-                  </div>
-                  <h6>{element.keyword}</h6>
-                  <h6>{element.category}</h6>
-                  <h6>{element.description}</h6>
-                  <h6>{element.created_date}</h6>
-                  <Link to={`/request/${element._id}`} ><button>View Details</button></Link>
-                    </Then>
-                  </If>
-                  </ul >
-                )}
-              </ul>
-                )} */}
             </>
         )
 }
