@@ -23,6 +23,7 @@ import { useContext } from 'react';
 import { If, Then, Else } from 'react-if';
 import LandingPage from '../../pages/landing'
 import Chatlist from '../../pages/chatlist.jsx';
+import ChatListWithChatMsg from '../../pages/chatList&chatMsg.jsx';
 
 
 
@@ -44,14 +45,14 @@ const Main = (props) =>{
           <Route  exact path="/request/:id" component={UserRequestPage} />
           <Route  exact path="/settings" component={Settings} />
           <Route  exact path="/notification" component={Notification} />
-          <Route  exact path="/chat/:id" component={Chat} />
+          {/* <Route  exact path="/chat/:id" component={Chat} /> */}
           <Route  exact path="/search" component={Search} />
           <Route  exact path="/searchResult" component={SearchResultsPage} />
           <Route  exact path="/explore" component={ExplorePage} />
           <Route  exact path="/request" component={RequestForm} />
           <Route  exact path="/allRequest" component={AllRequestPage} />
           <Route  exact path="/profile/:id" component={OthersProfile} />
-          <Route  exact path="/chat" component={Chatlist} />
+          <Route  exact path="/chat/:id" component={ChatListWithChatMsg} />
           <Route  exact path="/video/:id" component={video} />
 
           
