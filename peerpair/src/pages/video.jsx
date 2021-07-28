@@ -2,6 +2,15 @@ import React, { useEffect, useRef, useState } from "react";
 import io from "socket.io-client";
 import Peer from "simple-peer";
 import styled from "styled-components";
+import TopBanner from '../../src/components/video/topBanner.jsx';
+// import ResultsBanner from '../../src/components/searchResultRequest/searchResultRequest.jsx';
+import Button from '@material-ui/core/Button';
+import { makeStyles } from '@material-ui/core/styles';
+import MicIcon from '@material-ui/icons/Mic';
+import VideocamIcon from '@material-ui/icons/Videocam';
+import '../design/video.css';
+
+
 
 const Container = styled.div`
     padding: 20px;
@@ -124,17 +133,46 @@ const Room = (props) => {
         return peer;
     }
 
+    const useStyles = makeStyles((theme) => ({
+        button: {
+          textShadow: "2px 1px 3px rgba(24, 24, 24, 0.39)",
+          color:"white",
+          width:"11.8em",
+          height:"4em",
+          marginLeft:"1em",
+          backgroundColor:"rgba(90, 214, 224,.7)",
+        },
+      }));
+      const classes = useStyles();
+
     return (
-        <Container>
+        <>
+        <style>{'body { background-color: #EDE3FA; }'}</style>
+        <TopBanner/>
+        <div className="video-chatContainer">
+           <div className="videoChat">
             <StyledVideo muted ref={userVideo} autoPlay playsInline />
             {peers.map((peer, index) => {
                 return (
                     <Video key={index} peer={peer} />
                 );
             })}
-			<button onClick={mute}>mute</button>
-			<button onClick={playStop}>camera</button>
-        </Container>
+            </div>
+            <div className="videoChat-btn">
+			<Button 
+            variant="contained"
+            className={`${classes.button} + newbtn`}
+            startIcon={<MicIcon />}
+            onClick={mute}>mute</Button>
+
+			<Button 
+            variant="contained"
+            className={`${classes.button} + newbtn`}
+            startIcon={<VideocamIcon />}
+            onClick={playStop}>camera</Button>
+            </div>
+        </div>
+            </>
     );
 };
 

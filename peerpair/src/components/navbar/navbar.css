@@ -36,3 +36,11 @@ ul, li {
   background-color: rgb(211, 236, 240);
   cursor: pointer;
 }
+
+/* .d-inline .mx-2{
+  width: 20px;
+}
+
+.d-inline .mx-2 .dropdown-menu .show{
+  width: 100px;
+} */

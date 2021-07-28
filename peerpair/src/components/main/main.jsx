@@ -37,7 +37,7 @@ const Main = (props) =>{
       <Then>
       {/* <LoginContext> */}
       <VideoContext>
-        {/* <Header/> */}
+        <Header/>
         <Switch>
           <Route exact path="/" component={UserProfilePage}>
           {/* ()=> contextType.loggedIn == false ? <LandingPage/>  : <UserProfilePage/>  */}
