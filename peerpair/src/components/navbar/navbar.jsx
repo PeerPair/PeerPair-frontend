@@ -66,27 +66,34 @@ const Navbar = (props) => {
       {/* <div className="category-icon">
             <Icon icon={signOut} />
           </div> */}
-        <li><div> <Icon icon={signOut} onClick={contextType.logout} type='button' />
-         </div></li>
+
+        <li><div> 
+          <ExitToAppIcon onClick={contextType.logout} type='button'> </ExitToAppIcon>
+          {/* <Icon icon={ExitToAppIcon} onClick={contextType.logout} type='button' /> */}
+         </div>
+</li>
+
         <li> <Link to="/"><FaUser color="#333333" size={23}/></Link> </li>
         <li> <Link to="/explore"><FaCompass color="#333333" size={23}/></Link> </li>
+        <li>
+            <a href='/search'>
+            <SearchIcon></SearchIcon>
+         </a> 
+          </li>
         <li> <Dropdown className="d-inline mx-2">
           <Dropdown.Toggle  as={'div'} id="dropdown-autoclose-true">
-            <h2 className="bell-frh">{notify.newMessages.length}</h2>
             <Notifications />
           </Dropdown.Toggle>
+
           <Dropdown.Menu>
-            <Dropdown.Header>Notifications</Dropdown.Header>
-            <hr />
             {notify.newMessages.map((val) => {
               return (
                 <Link to={'/request/'+val.split('/')[2]}>
-                  <Dropdown.Item   as='div' disable={true} >
-                    <div className="new-not">
-                  <h2>{val.split('/')[3]} &nbsp; &nbsp; &nbsp; </h2><Link to={'/chat/'+val.split('/')[1]}>
-                  <ForumIcon />
+                  <Dropdown.Item  as='div' disable={true}>
+                  {val.split('/')[3]} <Link to={'/chat/'+val.split('/')[1]}>
+                    Start <ForumIcon />
                     </Link>
-                    </div>
+                  <h2>{console.log(val.split('/')[3],'notifications')}</h2>
                 </Dropdown.Item>
                 </Link>
               );
@@ -96,17 +103,20 @@ const Navbar = (props) => {
               return (
                 <Link to={'/request/'+val.split('/')[2]}>
                   <Dropdown.Item  as='div' disable={true} >
-                  <div className="old-not">
-                  {val.split('/')[3]}&nbsp; &nbsp; &nbsp; <Link to={'/chat/'+val.split('/')[1]}>
-                  <ForumIcon style={{margin:"5"}} /></Link>
-                  </div>
+                  {val.split('/')[3]} <Link to={'/chat/'+val.split('/')[1]}>
+                  Start <ForumIcon /></Link>
                 </Dropdown.Item>
                 </Link>
               );
             }).reverse()}
           </Dropdown.Menu>
         </Dropdown> </li>
-        <li> <Link to="/chat"><FaEnvelope color="#333333" size={23}/> </Link> </li>
+        <li> 
+         <Link to='/chat/:id'>
+         <ChatIcon></ChatIcon>
+         </Link> 
+          </li>
+         
       </ul>
     </nav>
   )

@@ -1,5 +1,6 @@
 import React from 'react';
 import { BrowserRouter as Router, Redirect, Route, Switch } from 'react-router-dom';
+import Header from '../header/header.jsx';
 import UserRequestPage from '../../pages/userRequest.jsx';
 import Settings from '../settings/settings.jsx';
 import Notification from '../notification/notification.jsx';
@@ -11,7 +12,10 @@ import SearchResultsPage from '../../pages/searchResults.jsx';
 import AllRequestPage from '../../pages/allRequest.jsx';
 import SignIn from '../signIn/signIn.jsx';
 import SignUp from '../signUp/signUp.jsx';
+// import LoginContext from '../../context/authContext';
 import VideoContext from '../../context/video';
+import Chat from '../../pages/chat.jsx';
+// import Login from './components/todo/logIn';
 import OthersProfile from '../othersProfile/othersProfile'
 import video from '../../pages/video.jsx';
 import {LoginContext} from '../../context/authContext';
@@ -70,9 +74,9 @@ const Main = (props) =>{
       <Route  exact path="/signin" component={SignIn} />
       <Route  exact path="/signup" component={SignUp} />
       <Route exact path="/" component={LandingPage}/>
-      {/* <Route exact path="*" >
+      <Route exact path="*" >
         <Redirect to='/signin'/>
-      </Route> */}
+      </Route>
         </Switch>
         </Router>
 
