@@ -12,23 +12,10 @@ import manwalks from '../../assets/manwalks.png';
 import Nav from '../navbar/navbar.jsx';
 import OtherSideBanner from '../otherSideBanner/otherRequestSide.jsx';
 import TopBanner from '../ownerRequestDetails/banner/banner.jsx';
-
-import { useDispatch } from 'react-redux';
-import {getNotifications} from '../../store/notification/reducer'
-
 const API = process.env.REACT_APP_API_URL;
 
 //when other user want to view details for one request
 const OtherRequestDetails = (props) => {
-  let dispatch = useDispatch();
-  useEffect(()=>{
-    const getNotification= async()=>{
-      await dispatch(getNotifications());
-      console.log('THE NOTIFICATION REDUCER RESULTS', props.NotificationResults )
-    }
-    getNotification();
-  },[]);
-
   function usePathName() {
     let location = useLocation();
     useEffect(() => {

@@ -110,6 +110,7 @@ const SearchForm = (props)=>{
         <Grid container component="main" className={classes.root}
         style={{height:'100vh'}}
         >
+      <CssBaseline />
       <Grid item xs={12} sm={8} md={4} component={Paper} elevation={6} square className='signUpForm' 
       style={{height: '45vh', marginTop:'5%', marginLeft: '10%', borderRadius:'1%'}}
       >
@@ -183,8 +184,11 @@ Find Requests
               
               marginTop:'5em'}}
               />
+              {/* <img className="peopley" alt="shape" src={peopleY} 
+              style={{width:'30%', marginLeft:'70em', marginTop:'-5em'}}
+              /> */}
 
-     </Grid>
+    </Grid>
         </> 
            </Then> 
             <Else> 

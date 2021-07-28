@@ -1,73 +1,75 @@
-.user-part {
-  display: grid;
-  grid-template-rows: 57% 37%;
-  background-color: rgb(114, 231, 220);
-  margin: 1.3em;
-  height: 7.7em;
-  margin-left: 3.9em;
-  margin-right: -4em;
-  box-shadow: 0px 2px 5px -3.3px rgba(0, 0, 0);
-  border-radius: 0.55em;
-}
 
-.others-card {
-  display: grid;
-  grid-template-columns: 30% auto;
-}
+.user-part{
+    display: grid;
+    grid-template-rows: 57% 37% ;
+    background-color: rgb(114, 231, 220);
+    margin:1.3em ;
+    height: 7.7em;
+    margin-left:3.9em;
+    margin-right: -4em;
+    box-shadow: 0px 2px 5px -3.3px rgba(0,0,0);
+    border-radius: .55em;
+  }
+  
+  .others-card {
+    display: grid;
+    grid-template-columns: 30% auto;
+  }
+  
+  .user-data{
+    display: grid;
+    grid-template-columns: 35% 60%;
+    padding-top:1.1em;
+  }
+  
+  .user-data p:first-child {
+    font-size: 1em;
+    font-weight:bolder;
+  }
+  
+  .user-data p:nth-child(2) {
+    margin-top: .45em;
+    font-size: .7em;
+    font-weight:normal;
+  }
+  
+  .user-icon {
+    box-shadow: 0px 2px 5px -4px rgba(0,0,0,0.95);
+    background-color: rgb(245, 231, 252);
+    font-size: 1.15em;
+    border-radius: 1em;
+    padding: .26em;
+    height: 1em;
+    width: 1em;
+    cursor: pointer;
+    margin-left: 2em;
+  }
+  
+  
+  .user-text {
+    margin-top:.2em;
+  }
+  
+  .user-image{
+    position: relative;
+    margin: -.2em .65em;
+    width:3em;
+    height: 3em;
+    border-radius: 50% 50%;
+    box-shadow: 0px 2px 5px -4px rgba(0,0,0);
+  }
+  
+  .user-icons{
+    display: grid;
+    grid-template-columns: 30% 30%;
+    background-color: rgba(250, 231, 255, 0.45);
+    padding-top:.6em;
+  }
 
-.user-data {
-  display: grid;
-  grid-template-columns: 30% 60%;
-  padding-top: 1.1em;
+  a, a:hover, a:focus, a:active {
+    text-decoration: none;
+    color: inherit;
 }
-
-.user-data p:first-child {
-  font-size: 1em;
-  font-weight: bolder;
-}
-
-.user-data p:nth-child(2) {
-  margin-top: 0.45em;
-  font-size: 0.7em;
-  font-weight: normal;
-}
-
-.user-icon {
-  box-shadow: 0px 2px 5px -4px rgba(0, 0, 0, 0.95);
-  background-color: rgb(245, 231, 252);
-  font-size: 1.15em;
-  border-radius: 1em;
-  padding: 0.26em;
-  height: 1em;
-  width: 1em;
-  cursor: pointer;
-  margin-left: 2em;
-}
-
-.user-text {
-  margin-top: 0.2em;
-}
-
-.user-image {
-  position: relative;
-  margin: -0.2em 0.65em;
-  width: 3em;
-  height: 3em;
-  border-radius: 50% 50%;
-  box-shadow: 0px 2px 5px -4px rgba(0, 0, 0);
-}
-
-.user-icons {
-  display: grid;
-  grid-template-columns: 30% 30%;
-  background-color: rgba(250, 231, 255, 0.45);
-  padding-top: 0.6em;
-}
-
-a,
-a:hover,
-a:focus,
-a:active {
-  text-decoration: none;
-  color: inherit;
-}
+  
+  
+  
