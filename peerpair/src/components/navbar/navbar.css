@@ -44,3 +44,55 @@ ul, li {
 .d-inline .mx-2 .dropdown-menu .show{
   width: 100px;
 } */
+
+/************************************************************************************/
+.dropdown-toggle{
+  text-align: center;
+  padding: auto;
+}
+.bell-frh{
+  color: rgb(255, 255, 255);
+  margin-bottom: -10px;
+  margin-left: 10px;
+  background-color: rgb(180, 28, 28);
+  border-radius: 50%;
+  height: 24px;
+  width: 23px;
+  text-align: center;
+}
+.dropdown-menu{
+  background-color: rgb(173 224 233);
+  border-radius: 5px;
+  overflow-y: scroll;
+  height: 30%;
+  width: 320px;
+  align-items: center;
+  padding: 18px;
+}
+.dropdown-header{
+  height: 20px;
+  margin-top: 10px;
+  font-weight: bolder;
+  color: #000000;
+  font-size: 20px;
+  padding-left: 10px;
+}
+.dropdown-item {
+    width: 290px;
+    font-size: bold;
+    color: #000000;
+    border-radius: 10px;  
+    padding: 12px;
+    margin-top: 10px;
+    font-size: 15px;
+    background-color: rgb(211, 236, 240);
+}
+.dropdown-item:hover{
+  color: #252323c2;
+  cursor: pointer;
+}
+.new-old{
+  background-color: #0b6a7a;
+}
+
+
