@@ -26,8 +26,6 @@ import IconButton from '@material-ui/core/IconButton';
 import DeleteIcon from '@material-ui/icons/Delete';
 import { FormControl, Input } from '@material-ui/core';
 
-
-
 import './signUp.css';
 
 const useStyles = makeStyles((theme) => ({
@@ -64,12 +62,12 @@ const useStyles = makeStyles((theme) => ({
     [`& fieldset`]: {
       borderRadius: 30,
     },
-    [`&.Mui-focused `]: {
-      padding : 30,
-    },
-    "&.Mui-activated fieldset": {
-      padding : 30,
-    },
+    // [`&.Mui-focused `]: {
+    //   padding : 30,
+    // },
+    // "&.Mui-activated fieldset": {
+    //   padding : 30,
+    // },
   }
 }));
 

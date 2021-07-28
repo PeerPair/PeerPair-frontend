@@ -1,9 +1,9 @@
 import React from 'react';
-import {Redirect } from 'react-router-dom';
+import {Redirect, Switch } from 'react-router-dom';
 import { useState } from 'react';
 import { useContext } from 'react';
 import { LoginContext } from '../../context/authContext';
-import {Form, Alert } from 'react-bootstrap';
+import {Alert } from 'react-bootstrap';
 import {When} from 'react-if'
 
 ///////////////////////////////////
@@ -167,30 +167,14 @@ function SignIn(props){
 </div>
 </Grid>
 </Grid>
-              {/* <Form>
-                  <Form.Group controlId="formBasicUsername">
-                      <Form.Label>Email</Form.Label>
-                      <Form.Control onChange={handleChange} name='email' type='email' placeholder='Enter your Email'>
-                      </Form.Control>
-                  </Form.Group>
-                  <Form.Group controlId="formBasicPassword">
-            <Form.Label>Password</Form.Label>
-            <Form.Control onChange={handleChange} name='password' type="password" placeholder="Password" />
-          </Form.Group>
-              </Form>
-         
-              <Button 
-              variant='info' onClick={handleSubmit} 
-              type='submit' >
-                  Sign In
-                  </Button> */}
                   <When condition={contextType.isValid === false}>
                   <Alert variant='danger'>
                     Failed to LogIn 
                     </Alert>
                   </When>
                   <When condition={contextType.loggedIn} >
-                  <Redirect to='/'/>
+
+                  <Redirect exact to='/'/>
                   </When>
         
       </>
