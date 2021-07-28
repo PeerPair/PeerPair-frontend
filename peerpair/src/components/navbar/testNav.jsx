@@ -5,22 +5,14 @@ import { useContext } from 'react';
 import { Dropdown } from 'react-bootstrap';
 import { LoginContext } from '../../context/authContext';
 import cookies from 'react-cookies';
-import './navbar.css';
+import './testNav.css';
 import { Notifications } from '@material-ui/icons';
-import { FaUser, FaCog, FaCompass , FaBell , FaEnvelope  } from 'react-icons/fa';
+import { FaUser, FaCog, FaCompass , FaBell , FaEnvelope } from 'react-icons/fa';
 import { Icon } from "@iconify/react";
 import signOut from "@iconify-icons/uil/sign-out-alt";
-
-import ExitToAppIcon from '@material-ui/icons/ExitToApp';
-import ChatIcon from '@material-ui/icons/Chat';
-import SearchIcon from '@material-ui/icons/Search';
-import {getNotifications} from '../../store/notification/reducer'
-import { connect } from 'react-redux';
-
-
 import ForumIcon from '@material-ui/icons/Forum';
 import { Button } from 'bootstrap';
-
+import { Paper } from '@material-ui/core';
 
 // import './navbar.scss'
 const Navbar = (props) => {
@@ -29,13 +21,6 @@ const Navbar = (props) => {
     newMessages: [],
     all: [],
   });
-  useEffect(()=>{
-    const getNotification= async()=>{
-      await props.getNotifications();
-      console.log('THE NOTIFICATION REDUCER RESULTS', props.NotificationResults )
-    }
-    getNotification();
-  },[]);
   
   const contextType = useContext(LoginContext);
   useEffect(() => {
@@ -61,32 +46,29 @@ const Navbar = (props) => {
   };
 
   return (
-    <nav className="mynav">
+      <nav className="mynav">
       <ul className="icons">
       {/* <div className="category-icon">
             <Icon icon={signOut} />
-          </div> */}
+        </div> */}
         <li><div> <Icon icon={signOut} onClick={contextType.logout} type='button' />
          </div></li>
         <li> <Link to="/"><FaUser color="#333333" size={23}/></Link> </li>
         <li> <Link to="/explore"><FaCompass color="#333333" size={23}/></Link> </li>
+        <div className="menu-icon">
         <li> <Dropdown className="d-inline mx-2">
           <Dropdown.Toggle  as={'div'} id="dropdown-autoclose-true">
-            <h2 className="bell-frh">{notify.newMessages.length}</h2>
             <Notifications />
           </Dropdown.Toggle>
           <Dropdown.Menu>
-            <Dropdown.Header>Notifications</Dropdown.Header>
-            <hr />
             {notify.newMessages.map((val) => {
               return (
                 <Link to={'/request/'+val.split('/')[2]}>
-                  <Dropdown.Item   as='div' disable={true} >
-                    <div className="new-not">
-                  <h2>{val.split('/')[3]} &nbsp; &nbsp; &nbsp; </h2><Link to={'/chat/'+val.split('/')[1]}>
-                  <ForumIcon />
+                  <Dropdown.Item  as='div' disable={true}>
+                  {val.split('/')[3]} <Link to={'/chat/'+val.split('/')[1]}>
+                    Start <ForumIcon />
                     </Link>
-                    </div>
+                  <h2>{console.log(val.split('/')[3],'notifications')}</h2>
                 </Dropdown.Item>
                 </Link>
               );
@@ -96,29 +78,22 @@ const Navbar = (props) => {
               return (
                 <Link to={'/request/'+val.split('/')[2]}>
                   <Dropdown.Item  as='div' disable={true} >
-                  <div className="old-not">
-                  {val.split('/')[3]}&nbsp; &nbsp; &nbsp; <Link to={'/chat/'+val.split('/')[1]}>
-                  <ForumIcon style={{margin:"5"}} /></Link>
-                  </div>
+                  {val.split('/')[3]} <Link to={'/chat/'+val.split('/')[1]}>
+                  Start <ForumIcon /></Link>
                 </Dropdown.Item>
                 </Link>
               );
             }).reverse()}
           </Dropdown.Menu>
         </Dropdown> </li>
+          </div>
         <li> <Link to="/chat"><FaEnvelope color="#333333" size={23}/> </Link> </li>
       </ul>
     </nav>
   )
 };
-const mapStateToProps = state => ({
-  NotificationResults : state.notificationReducer,
-});
 
-const mapDispatchToProps = {getNotifications};
-export default connect(mapStateToProps,mapDispatchToProps)(Navbar)
-
-// export default Navbar;
+export default Navbar;
 
 
 
