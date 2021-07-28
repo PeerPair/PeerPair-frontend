@@ -1,11 +1,10 @@
-@import url("./reset.css");
+/* @import url("./reset.css"); */
 @import url("https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,wght@0,300;1,900&family=Pacifico&display=swap");
 
 body {
   font-family: "Nunito Sans", sans-serif;
 }
-
 .profile-page {
   display: grid;
   grid-template-columns: 30% 70%;
@@ -147,4 +146,9 @@ body {
   to {
     transform: translate(0, -0px);
   }
+}
+*,
+*::before,
+*::after {
+  box-sizing: none;
 }

@@ -10,6 +10,7 @@ import Gaming from "@iconify-icons/uil/laptop";
 import Sports from "@iconify-icons/uil/football-ball";
 import Traveling from "@iconify-icons/uil/plane";
 import Cooking from "@iconify-icons/uil/utensils";
+import halfCircle from '../../assets/halfCircle.png'
 
 let categories={'Study Group':Study,Gaming,Sports,Traveling,Cooking}
 
@@ -19,7 +20,7 @@ export default function SideBanner(props) {
     <div>
       <div className="side-banner">
         <div className="side-data">
-          <p>{props.data.keyword.split(' ').join(' - ').toUpperCase()}</p>
+          <p>{props.data.keyword.toUpperCase()}</p>
           <div className="side-category">
             <div className="side-category-icon">
               <Icon icon={categories[props.data.category]} />
@@ -44,7 +45,14 @@ export default function SideBanner(props) {
         <p>{props.data.submitters.length}</p>
         <p className="submitters-p">Submits</p>
       </div>
-      <div className="side-circle side-circle2 "></div>
+      
+        {/* <div className='whiteDiv'>
+          hello */}
+      {/* <div className="side-circle side-circle2 "> */}
+      <img className="side-circle2" alt="ladder" src={halfCircle} />
+
+        {/* </div> */}
+      {/* </div> */}
       <div className="side-circle"></div>
       <img className="ladder" alt="ladder" src={leaf} />
       <img className="leafs2" alt="ladder" src={leaf2} />
