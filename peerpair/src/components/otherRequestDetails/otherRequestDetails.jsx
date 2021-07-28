@@ -7,7 +7,11 @@ import { getUserInfo } from '../../store/userInfo/action.js';
 import { connect } from 'react-redux';
 import { useLocation } from 'react-router';
 import { Link } from 'react-router-dom';
-
+import funkyground from '../../assets/funkyground.png';
+import manwalks from '../../assets/manwalks.png';
+import Nav from '../navbar/navbar.jsx';
+import OtherSideBanner from '../otherSideBanner/otherRequestSide.jsx';
+import TopBanner from '../ownerRequestDetails/banner/banner.jsx';
 const API = process.env.REACT_APP_API_URL;
 
 //when other user want to view details for one request
@@ -20,12 +24,14 @@ const OtherRequestDetails = (props) => {
     console.log(location.pathname, 'location');
     return location.pathname;
   }
-  const [data, setData] = useState({ submitters: [] });
-  const [owner, setOwner] = useState([]);
+  const [data, setData] = useState({ _id: '', keyword: '', submitters: [] });
+  const [owner, setOwner] = useState({});
   const [userID, setUserID] = useState('');
   useEffect(() => {
     const test = async () => {
       await props.getUserInfo();
+
+
       setUserID(props.info.userInfo.usertData._id);
     };
     test();
@@ -98,35 +104,16 @@ const OtherRequestDetails = (props) => {
   // if(data){
   return (
     <>
-      <h3>Request Owner Information</h3>
-      <Link to={`/profile/${data.user_ID}`}>
-        <img src="http://via.placeholder.com/200x200" alt="placeHolder" />
-      </Link>
-      <h4>
-        {owner.first_name} {owner.last_name}
-      </h4>
-      <If condition={data.accepted === true}>
-        <Then>
-          <h6>This Request Has Been Accepted</h6>
-        </Then>
-        <Else>
-          <h6>This Request Is Not Accepted Yet</h6>
-        </Else>
-      </If>
-      <p>Submitters Number : {data.submitters.length}</p>
-      <p>Keyword: {data.keyword}</p>
-      <p>Category: {data.category}</p>
-      <p>Description: {data.description}</p>
-      <p>Created_date: {data.created_date}</p>
-      <p>userID : {userID}</p>
-      <If condition={data.submitters.includes(userID)}>
-        <Then>
-          <button onClick={() => handleUnSubmit(data._id)}>Un-Submit</button>
-        </Then>
-        <Else>
-          <button onClick={() => handleSubmit(data._id)}>Submit</button>
-        </Else>
-      </If>
+      <div>
+        <style>{'body { background-color: #f0eaf7; }'}</style>
+
+        <Nav />
+        <TopBanner />
+        <OtherSideBanner owner={userID} data={data} unsubmitREQ={(reqId)=>{handleUnSubmit(reqId);}} submitREQ={(reqId)=>{handleSubmit(reqId);}} />
+        <div className="purple-div"></div>
+        <img className="dayflow" alt="dayflow" src={funkyground} />
+        <img className="man-walk" alt="dayflow" src={manwalks} />
+      </div>
     </>
   );
 };

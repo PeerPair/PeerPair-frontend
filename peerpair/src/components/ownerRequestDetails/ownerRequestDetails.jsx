@@ -1,13 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import { useLocation } from 'react-router';
 import { connect } from 'react-redux';
-import { Redirect, Link } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
 import { When, If, Then, Else } from 'react-if';
 import { getUserInfo } from '../../store/userInfo/action.js';
 import RequestSubmitters from '../submitters/submitters.jsx';
 import cookie from 'react-cookies';
-import OtherUserRequest from '../otherRequestDetails/otherRequestDetails';
-// import { Button, Alert, Spinner } from 'react-bootstrap';
 import { Button } from '@material-ui/core';
 import UpdateRequest from '../updateRequest/updateRequest.jsx';
 import TopBanner from './banner/banner.jsx';
@@ -15,9 +13,6 @@ import Nav from '../navbar/navbar.jsx';
 import SideBanner from '../sideBanner/banner.jsx';
 import { makeStyles } from '@material-ui/styles';
 import SubmittersBanner from './banner/submittersBanner.jsx';
-import { Icon } from '@iconify/react';
-import pen from '@iconify-icons/uil/pen';
-import trash from '@iconify-icons/uil/trash';
 import './ownerRequestDetails.scss'
 const useStyles = makeStyles((theme) => ({
   button: {
