@@ -20,7 +20,7 @@ export default function RequestCard(props) {
   console.log(props.data);
   const [state, setstate] = useState(props.data)
   return (
-    <div className="user-card">
+    <div className={(state.accepted)?"user-card accepted-card":"user-card"}>
       <div>
         <img
           className="req-image"

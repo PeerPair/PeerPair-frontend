@@ -44,10 +44,8 @@ const dispatch = useDispatch()
         <If condition={owner && !loading}>
           <Then>
             <OwnerRequestDetails />
-            <div>then</div>
           </Then>
           <Else>
-            <div>else</div>
             <OtherRequestDetails />
           </Else>
         </If>

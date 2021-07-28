@@ -2,8 +2,8 @@ import React from "react";
 import RequestCard from "../reqCard/reqCard";
 import "./othersReqCard.css";
 import { Icon } from "@iconify/react";
-import person from "../../assets/person1.png";
 import plus from '@iconify-icons/uil/plus';
+import person from "../../assets/person1.png";
 import messege from '@iconify-icons/uil/comment';
 import { Link } from "react-router-dom";
 import Submit from "../submit/submit";
@@ -25,7 +25,7 @@ export default function OthersReqCard(props) {
         </Link>
         <div  className="user-icons">
           <div className="user-icon">
-            <Icon icon={plus} />
+            {/* <Icon icon={plus} /> */}
             <Submit request={props.requestData}/>
           </div>
           <div className="user-icon">

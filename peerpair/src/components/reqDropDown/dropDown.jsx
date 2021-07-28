@@ -40,7 +40,7 @@ export default function FadeMenu(props) {
         onClose={handleClose}
         TransitionComponent={Fade}
       >
-        <UpdateRequest Provider={props.data} updateData={(d)=>{props.updateData(d)}}/>
+        <When condition={!props.data.accepted}><UpdateRequest Provider={props.data} updateData={(d)=>{props.updateData(d)}}/></When>
         <MenuItem onClick={()=>{go(true);}}>View Details</MenuItem>
         <When condition={redirect}><Redirect to={'/request/'+props.data._id}></Redirect></When>
       </Menu>
