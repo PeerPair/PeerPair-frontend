@@ -36,6 +36,7 @@ const Main = (props) =>{
       <Then>
       <Router >
       <VideoContext>
+
         <Switch>
           <Route exact path="/" component={UserProfilePage}>
           {/* ()=> contextType.loggedIn == false ? <LandingPage/>  : <UserProfilePage/>  */}

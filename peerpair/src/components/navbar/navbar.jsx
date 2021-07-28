@@ -10,6 +10,8 @@ import { Notifications } from '@material-ui/icons';
 import { FaUser, FaCog, FaCompass , FaBell , FaEnvelope } from 'react-icons/fa';
 import { Icon } from "@iconify/react";
 import signOut from "@iconify-icons/uil/sign-out-alt";
+import ForumIcon from '@material-ui/icons/Forum';
+import { Button } from 'bootstrap';
 
 // import './navbar.scss'
 const Navbar = (props) => {
@@ -49,8 +51,7 @@ const Navbar = (props) => {
             <Icon icon={signOut} />
           </div> */}
         <li><div> <Icon icon={signOut} onClick={contextType.logout} type='button' />
-         </div>
-</li>
+         </div></li>
         <li> <Link to="/"><FaUser color="#333333" size={23}/></Link> </li>
         <li> <Link to="/explore"><FaCompass color="#333333" size={23}/></Link> </li>
         <li> <Dropdown className="d-inline mx-2">
@@ -63,7 +64,10 @@ const Navbar = (props) => {
               return (
                 <Link to={'/request/'+val.split('/')[2]}>
                   <Dropdown.Item  as='div' disable={true}>
-                  {val.split('/')[3]} <Link to={'/chat/'+val.split('/')[1]}>Chat</Link>
+                  {val.split('/')[3]} <Link to={'/chat/'+val.split('/')[1]}>
+                    Start <ForumIcon />
+                    </Link>
+                  <h2>{console.log(val.split('/')[3],'notifications')}</h2>
                 </Dropdown.Item>
                 </Link>
               );
@@ -72,8 +76,9 @@ const Navbar = (props) => {
             {notify.all.map((val) => {
               return (
                 <Link to={'/request/'+val.split('/')[2]}>
-                  <Dropdown.Item  as='div' disable={true}>
-                  {val.split('/')[3]} <Link to={'/chat/'+val.split('/')[1]}>Chat</Link>
+                  <Dropdown.Item  as='div' disable={true} >
+                  {val.split('/')[3]} <Link to={'/chat/'+val.split('/')[1]}>
+                  Start <ForumIcon /></Link>
                 </Dropdown.Item>
                 </Link>
               );
