@@ -1,7 +1,7 @@
 import React,{useState} from "react";
 // import '../../pages/reset.css';
 import "./reqCard.css";
-import "../../pages/reset.css";
+// import "../../pages/reset.css";
 import ReqDropdown from "../reqDropDown/dropDown.jsx";
 import { Icon } from "@iconify/react";
 import heartbeat from "@iconify-icons/uil/heartbeat";
