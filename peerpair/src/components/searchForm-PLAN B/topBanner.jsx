@@ -3,13 +3,12 @@ import back from '../../assets/shape4.png'
 import cloud from '../../assets/mycloud3.png'
 import logo from '../../assets/logo2.png'
 
-// import '../../pages/reset.css'
-import './topBanner.css'
 export default function TopBanner() {
   return (
-    <div className="topBanner-div">
+    <div className="topBanner-div" >
 
-      <div className="banner-heading"> <span>|</span> Requests Search</div>
+      <div className="banner-heading"> <span>|</span> Find Requests
+</div>
           <img alt="bg" src={logo} className="logo logo2"/>
       <div className="container-cloud1">
           <img alt="bg" src={cloud} className="clouds1"/>
