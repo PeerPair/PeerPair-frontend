@@ -1,7 +1,7 @@
 import React,{useState} from 'react';
 // import { Button,Modal,Form} from 'react-bootstrap';
 import { Redirect } from 'react-router-dom';
-import { When } from 'react-if';
+import { When,If,Else,Then } from 'react-if';
 import cookie from 'react-cookies';
 import MenuItem from '@material-ui/core/MenuItem';
 //////////////////////////////////

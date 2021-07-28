@@ -6,21 +6,41 @@ import superagent from 'superagent';
 import { getUserInfo } from '../../store/userInfo/action.js';
 import { connect } from 'react-redux';
 import { useLocation } from 'react-router';
-import { Link } from 'react-router-dom';
+import { Link  } from 'react-router-dom';
+import { useRadioGroup } from '@material-ui/core';
+import { Icon } from "@iconify/react";
+
+import plus from '@iconify-icons/uil/plus';
+import check from '@iconify-icons/uil/check'
 
 const API = process.env.REACT_APP_API_URL;
 
 //when other user want to view details for one request
 const Submit = (props) => {
-
+    console.log('hi',props.request)
   const [data, setData] = useState(props.request);
+  const [userID, setUserID] = useState('');
 
     useEffect(()=>{
+        setData(props.request);
         const getUser =async()=>{
             await props.getUserInfo();
+          if(props.info.userInfo.usertData)  setUserID(props.info.userInfo.usertData._id);
+
         }
         getUser();
     },[])
+    useEffect(()=>{
+        // setData(props.request);
+
+        const getUser =async()=>{
+            await props.getUserInfo();
+            if(props.info.userInfo.usertData)   setUserID(props.info.userInfo.usertData._id);
+
+
+        }
+        getUser();
+    },[data])
 
 
 
@@ -35,7 +55,7 @@ const Submit = (props) => {
       const response = await superagent
         .put(`${API}/submit/${reqId}`)
         .set({ Authorization: 'Bearer ' + token })
-        .send({ id: props.info.usertData._id });
+        .send({ id:userID });
       console.log('SUBMIT REQUEST RESPONSE', response);
       return await setData(response.body);
     } catch (error) {
@@ -48,29 +68,29 @@ const Submit = (props) => {
       const response = await superagent
         .put(`${API}/unsubmit/${reqId}`)
         .set({ Authorization: 'Bearer ' + token })
-        .send({ id: props.info.usertData._id });
-      console.log('SUBMIT REQUEST RESPONSE', response);
+        .send({ id: userID });
+      console.log('UNSUBMIT REQUEST RESPONSE', response);
       return await setData(response.body);
     } catch (error) {
       console.log('Failed To UN-Submit To The Request ', error.message);
     }
   }
 
- if(props.info.usrInfo) return (
+ return (
     <>
 
-      <If condition={data.submitters.includes(props.info.usrInfo.usertData._id)}>
+      <If condition={data.submitters.includes(userID) } >
         <Then>
-          <button onClick={() => handleUnSubmit(data._id)}>Un-Submit</button>
+        <Icon icon={check} onClick={() => handleUnSubmit(data._id)}/>
+ 
         </Then>
         <Else>
-          <button onClick={() => handleSubmit(data._id)}>Submit</button>
+        <Icon icon={plus}  onClick={() => handleSubmit(data._id)}/>
         </Else>
       </If>
     </>
   )
 
-  else return <div>...</div>
 };
 
 const mapStateToProps = (state) => ({

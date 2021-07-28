@@ -23,7 +23,8 @@ const Chatlist = () => {
     },[])
 
     return (
-            <aside class="aside">
+      <div className='aside'>
+            <aside >
               <header>
 			      <input type="text" placeholder="search"/>
 		       </header>
@@ -34,24 +35,25 @@ const Chatlist = () => {
                          <Then>
                            <img alt='profileImage' src={'data:image/jpg;base64,'+val.profile_image}/>
                          </Then>
-                      {/* <Else>
-                        <div class="avatar">
-                           <Avatar name={val.first_name + ' ' + val.last_name} maxInitials={2}/>
+                      <Else>
+                        <div className="avatarFrh">
+                           <Avatar name={val.first_name + ' ' + val.last_name} maxInitials={2} size={70}/>
                         </div>
-                      </Else> */}
+                      </Else>
                       </If>
-                           <div>
+                           <div className="on-Off">
                                <h2>{val.first_name + ' ' + val.last_name}</h2>
-                               {((val.first_name.length+val.last_name.length)%2)?
+                               {/* {((val.first_name.length+val.last_name.length)%2)?
                                <h3><span class="status orange"></span>offline</h3>:
-                               <h3><span class="status green"></span>online</h3>   
-					            }
+                               <h3><span class="status green-x"></span>online</h3>   
+					            } */}
                            </div>
                      </li>
                   </Link>)}
                </ul>
             </aside>
+             </div>
     )
 }
 
-export default Chatlist
+export default Chatlist;
