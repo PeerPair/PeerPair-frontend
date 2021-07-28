@@ -32,12 +32,11 @@ const Main = (props) =>{
   
   return (
 
-      <Router >
       <If condition={contextType.loggedIn === true}>
       <Then>
-      {/* <LoginContext> */}
+      <Router >
       <VideoContext>
-        <Header/>
+
         <Switch>
           <Route exact path="/" component={UserProfilePage}>
           {/* ()=> contextType.loggedIn == false ? <LandingPage/>  : <UserProfilePage/>  */}
@@ -54,25 +53,35 @@ const Main = (props) =>{
           <Route  exact path="/profile/:id" component={OthersProfile} />
           <Route  exact path="/chat/:id" component={ChatListWithChatMsg} />
           <Route  exact path="/video/:id" component={video} />
-
+          <Route exact path="/signin" >
+        <Redirect to='/'/>
+      </Route>
+          <Route exact path="/signup" >
+        <Redirect to='/'/>
+      </Route>
           
         </Switch>
       </VideoContext>
+      </Router>
+
       </Then>
       <Else>
+        <Router>
+
+
         <Switch>
 
       <Route  exact path="/signin" component={SignIn} />
       <Route  exact path="/signup" component={SignUp} />
       <Route exact path="/" component={LandingPage}/>
-      {/* <Route exact path="*" >
+      <Route exact path="*" >
         <Redirect to='/signin'/>
-      </Route> */}
+      </Route>
         </Switch>
+        </Router>
+
       </Else>
       </If>
-      {/* </LoginContext> */}
-      </Router>
 
 
     )

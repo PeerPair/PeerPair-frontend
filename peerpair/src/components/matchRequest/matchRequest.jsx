@@ -3,16 +3,20 @@ import { useEffect,useState } from "react";
 import cookie from 'react-cookies';
 import{Card , Button} from 'react-bootstrap';
 import { Link  } from 'react-router-dom';
+import OthersReqCard from '../resultCard/card';
+import  superagent  from 'superagent';
 const token = cookie.load('auth');
 
 
 const MatchRequest = (props) =>{
-  const [matchRequest, setRequest] = useState([])
+  const [matchRequest, setRequest] = useState({data:[],userInfoData:[]})
 
     useEffect(() => {
       const getMatchRequest = async () => {
         const MatchRequestFromAPI = await fetchMatchRequest();
         setRequest(MatchRequestFromAPI);
+        console.log('MatchRequestFromAPI',MatchRequestFromAPI)
+        console.log('matchRequest',matchRequest)
     }
     getMatchRequest()
   }, [])
@@ -30,28 +34,22 @@ const MatchRequest = (props) =>{
     console.log(res,'res');
     const data = await res.json()
     console.log(data, 'get match request');
-    return data;
+    let userInfoData = [];
+    for (let i = 0; i < data.length; i++) {
+      const userData = await superagent.get(`${process.env.REACT_APP_API_URL}/profile/${data[i].user_ID}`).set({'Authorization' : 'Bearer '+ token});
+      userInfoData.push(userData.body);
+      
+    }
+    return {data,userInfoData};
+    
   }
 
   if(matchRequest){
         return (
             <>
-              <h4>Match Request here</h4>
-              <h4>{matchRequest.map((val,idx)=>{
-              return (<Card className="text-center">
-              <Card.Header >{(val.accepted)?'Closed':'Open'}</Card.Header>
-              <Card.Body>
-              <Link to={`/profile/${val.user_ID}`} ><img src="http://via.placeholder.com/200x200" alt="placeHolder" /></Link>
-                <Card.Title style={{wordSpacing:'10px'}}>{val.keyword.toUpperCase()}</Card.Title>
-                <Card.Text>
-                  {val.description}
-                </Card.Text>
-                <Link to={`/request/${val._id}`}><Button>View Details</Button></Link>
-              </Card.Body>
-              <Card.Footer className="text-muted">{val.created_date}</Card.Footer>
-            </Card>)
-            })}</h4>
+            {matchRequest.userInfoData.map((val,idx)=><OthersReqCard key={idx} requestData={matchRequest.data[idx]} owner={val}/>)}
             </>
+            
         )
       }
     else return (

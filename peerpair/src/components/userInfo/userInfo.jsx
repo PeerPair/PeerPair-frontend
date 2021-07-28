@@ -25,9 +25,9 @@ const UserInfo = (props) =>{
               <img className="person" alt='profileImage' src={'data:image/jpg;base64,'+data.profile_image}/>
               </Then>
               <Else>
-          <Avatar className="person" name={data.first_name + ' ' + data.last_name} maxInitials={2} size={150}/>
+          <Avatar className="person" name={data.first_name + ' ' + data.last_name} maxInitials={2} size={120}/>
               </Else>
-            </If>
+            </If> 
 
         <div className="info">
           <p>{data.first_name} {data.last_name}</p>
