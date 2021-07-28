@@ -19,7 +19,7 @@ export default function SideBanner(props) {
     <div>
       <div className="side-banner">
         <div className="side-data">
-          <p>{props.data.keyword.split(' ').join('|').toUpperCase()}</p>
+          <p>{props.data.keyword.split(' ').join(' - ').toUpperCase()}</p>
           <div className="side-category">
             <div className="side-category-icon">
               <Icon icon={categories[props.data.category]} />
