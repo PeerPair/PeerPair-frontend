@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useLocation } from 'react-router';
 import { connect } from 'react-redux';
-import { Redirect, Link } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
 import { When, If, Then, Else } from 'react-if';
 import { getUserInfo } from '../../store/userInfo/action.js';
 import RequestSubmitters from '../submitters/submitters.jsx';
@@ -14,10 +14,6 @@ import SideBanner from '../sideBanner/banner.jsx';
 import { makeStyles } from '@material-ui/styles';
 import SubmittersBanner from './banner/submittersBanner.jsx';
 import './ownerRequestDetails.scss'
-import { Icon } from "@iconify/react";
-import pen from "@iconify-icons/uil/pen";
-import IconButton from '@material-ui/core/IconButton';
-import DeleteIcon from '@material-ui/icons/Delete';
 const useStyles = makeStyles((theme) => ({
   button: {
     textShadow: '2px 1px 3px rgba(24, 24, 24, 0.39)',
@@ -126,7 +122,7 @@ const RequestDetails = (props) => {
         <Then>
           <div className='edite-delete-buttons'>
 
-          {/* <Button
+          <Button
         onClick={()=>{deleteRequest(request[0]._id)}}
         variant="contained"
         color='secondary'
@@ -135,24 +131,13 @@ const RequestDetails = (props) => {
         <div>
         Delete
         </div>
-      </Button> */}
-      <IconButton aria-label="delete" type='button' onClick={()=>{deleteRequest(request[0]._id)}}
-      style={{marginTop: '.3em', marginLeft:'5em', color: 'black'}}
-      >
-        <DeleteIcon />
-      </IconButton>
+      </Button>
 
-        <Link 
-        className='editLink'
-        > 
-        <div 
-        className='editDivIcon'
-        style={{marginTop:'-1.4em', marginLeft:'6em' }}>
-          <UpdateRequest Provider={request[0]} updateData={(d)=>{setRequest([d])}}
-          
-          />
-              </div>
-        </Link>
+        <Button variant="contained" >
+        <div>
+          <UpdateRequest Provider={request[0]} updateData={(d)=>{setRequest([d])}}/>
+        </div>
+      </Button>
 
 
 
@@ -171,11 +156,9 @@ const RequestDetails = (props) => {
           <br></br>
           <br></br>
           <h4 style={{fontWeight:'bold'}}>Current Partner</h4>
+          <RequestSubmitters updateData={(data)=> setRequest([data])} accepted={true} Provider={request[0]} />
         
-          <RequestSubmitters 
-          updateData={(data)=> 
-          setRequest([data])} accepted={true} Provider={request[0]} 
-          />
+        
         </SubmittersBanner>
 
         </Else>

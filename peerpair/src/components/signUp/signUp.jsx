@@ -138,6 +138,7 @@ function SignUp(props){
     <style>{'body { background-color: #EDE3FA; hight: 100vh }'}</style>
 
         <Grid container component="main" className={classes.root}>
+      <CssBaseline />
       <img className="logoy" alt="shape" src={logo} />
       <img className="shapey" alt="shape" src={shape} />
       <img className="peopley" alt="shape" src={people} />

@@ -103,12 +103,7 @@ const fetchUpdRequest = async (updReq) =>{
         return (
             <>
             
-              <MenuItem variant='primary' onClick={handleClickOpen}>  
-              <p>
-              Edit
-              </p>
-              <Icon icon={pen} >
-            </Icon> </MenuItem>
+              <MenuItem variant='primary' onClick={handleClickOpen}>Edit Request</MenuItem>
               <Dialog open={open} onClose={handleClose} aria-labelledby="form-dialog-title"
               >
         <DialogTitle id="form-dialog-title">Update Request</DialogTitle>

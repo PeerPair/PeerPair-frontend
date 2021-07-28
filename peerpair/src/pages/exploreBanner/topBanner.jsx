@@ -3,7 +3,7 @@ import back from '../../assets/shape4.png'
 import cloud from '../../assets/mycloud3.png'
 import logo from '../../assets/logo2.png'
 
-// import '../../pages/reset.css'
+import '../../pages/reset.css'
 import './topBanner.css'
 export default function TopBanner() {
   return (

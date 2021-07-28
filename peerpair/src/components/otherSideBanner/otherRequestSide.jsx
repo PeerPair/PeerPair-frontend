@@ -57,7 +57,7 @@ export default function OtherSideBanner(props) {
           {props.data.description +" "}
 </p>
         </div>
-            <If condition={!props.data.submitters.includes(props.owner)}>
+            <If condition={props.data.submitters.includes(props.owner)}>
                 <Then>
 <Button
               variant="contained"

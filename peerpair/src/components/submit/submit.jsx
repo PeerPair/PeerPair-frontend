@@ -12,23 +12,11 @@ import { Icon } from "@iconify/react";
 
 import plus from '@iconify-icons/uil/plus';
 import check from '@iconify-icons/uil/check'
-import { useDispatch } from 'react-redux';
-import {getNotifications} from '../../store/notification/reducer'
 
 const API = process.env.REACT_APP_API_URL;
 
 //when other user want to view details for one request
 const Submit = (props) => {
-
-  let dispatch = useDispatch();
-  useEffect(()=>{
-    const getNotification= async()=>{
-      await dispatch(getNotifications());
-      console.log('THE NOTIFICATION REDUCER RESULTS', props.NotificationResults )
-    }
-    getNotification();
-  },[]);
-
     console.log('hi',props.request)
   const [data, setData] = useState(props.request);
   const [userID, setUserID] = useState('');
