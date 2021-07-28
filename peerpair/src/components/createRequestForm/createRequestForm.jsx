@@ -131,7 +131,6 @@ const RequestForm = (props) =>{
   </Alert></When>
     <style>{'body { background-color: #EDE3FA; hight: 100vh }'}</style>
         <Grid container component="main" className={classes.root}>
-      <CssBaseline />
       {/* <Grid item xs={false} sm={4} md={3} className={classes.image} 
       /> */}
 
@@ -208,7 +207,7 @@ Create A Request
 <FormControl
               variant="outlined"
               fullWidth
-              style={{marginRight : '10%',}}
+              style={{marginRight : '10%'}}
               className={classes.textField}
               id="formControl"
               onChange={changeHandleFile}

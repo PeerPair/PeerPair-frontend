@@ -6,6 +6,7 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { propTypes } from 'react-bootstrap/esm/Image';
 import { useState } from 'react';
 import { useEffect } from 'react';
+import Navbar from '../components/navbar/navbar';
 
 const ChatListWithChatMsg = (props) => {
     const [roomID, setID] = useState(props.match.params.id);
@@ -15,7 +16,7 @@ const ChatListWithChatMsg = (props) => {
     },[props.match.params.id])
         return ( 
             <>
-
+<Navbar/>
 <div className="main">
      <Chatlist/>
      <Chat roomID={roomID}/>
