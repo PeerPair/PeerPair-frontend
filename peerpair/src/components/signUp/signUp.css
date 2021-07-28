@@ -1,0 +1,67 @@
+@import url("https://fonts.googleapis.com/css2?family=Righteous&display=swap");
+
+.logoy {
+  position: absolute;
+  top: 1.8em;
+  left: 4em;
+  width: 10%;
+}
+input#Profile\ Picture {
+  margin-right: 45%;
+  margin-top: 10%;
+  color: #ede3fa;
+}
+
+label.MuiButtonBase-root.MuiButton-root.MuiButton-contained {
+  width: 100%;
+  background-color: #ede3fa;
+  height: 8em;
+  margin-top: 3%;
+  color: gray;
+}
+#formControl {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+}
+#formControl label {
+  margin-right: 5%;
+  width: 100%;
+}
+#formControl input {
+  margin-bottom: 9%;
+  margin-right: 18%;
+}
+
+.MuiPaper-root.MuiGrid-root.signUpForm.MuiGrid-item.MuiGrid-grid-xs-12.MuiGrid-grid-sm-8.MuiGrid-grid-md-5.MuiPaper-elevation6 {
+  height: 100vh;
+  background-color: #ede3fa;
+  color: rgb(50, 218, 231);
+}
+.peopley {
+  position: absolute;
+  top: 7em;
+  left: 4em;
+  width: 52%;
+  z-index: 2;
+}
+.nameDiv {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+}
+.shapey {
+  position: fixed;
+  width: 57.5vw;
+  height: 100vh;
+}
+
+.MuiFormLabel-root.MuiInputLabel-root.MuiInputLabel-formControl.MuiInputLabel-animated.MuiInputLabel-outlined.Mui-required.Mui-required {
+  margin-top: 10px;
+}
+
+label.MuiButtonBase-root.MuiButton-root.MuiButton-contained {
+  border-radius: 30px;
+}

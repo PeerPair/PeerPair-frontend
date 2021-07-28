@@ -1,0 +1,75 @@
+
+.user-part2{
+    display: grid;
+    grid-template-rows: 57% 37% ;
+    background-color: rgb(142, 223, 213);
+    margin: .53em 0em ;
+    height: 7.7em;
+    width:23.5em;
+    margin-left:.5em;
+    box-shadow: 0px 2px 5px -3.3px rgba(0,0,0);
+    border-radius: .55em;
+  }
+  
+  .others-card2 {
+    display: grid;
+    grid-template-columns: 30% auto;
+  }
+  
+  .user-data2{
+    display: grid;
+    grid-template-columns: 35% 40%;
+    padding-top:1em;
+  }
+  
+  .user-data2 p:first-child {
+    margin-top: -.35em;
+    font-size: 1.2em;
+    font-weight:bolder;
+  }
+  
+  .user-data2 p:nth-child(2) {
+    font-size: .9em;
+    font-weight:normal;
+  }
+  
+  .user-icon2 {
+    box-shadow: 0px 2px 5px -4px rgba(0,0,0,0.95);
+    background-color: rgb(245, 231, 252);
+    font-size: 1.3em;
+    border-radius: 1em;
+    padding: .18em;
+    height: 1em;
+    width: 1em;
+    cursor: pointer;
+  }
+  
+  
+  .user-text2 {
+    margin-top:1.2em;
+  }
+  
+  .user-image2{
+    position: relative;
+    margin: .1em 1.5em;
+    width:5.5em;
+    height: 5.5em;
+    border-radius: 50% 50%;
+    box-shadow: 0px 2px 5px -4px rgba(0,0,0);
+  }
+  
+  .user-icons2{
+    position: relative;
+    right:-8.1em;
+    display: grid;
+    grid-template-columns: 30% 30% 30%;
+    column-gap: .2em;
+    background-color: rgba(250, 231, 255, 0.45);
+    padding-top:.4em;
+    padding-left:1.3em;
+    width:8em;
+    border-radius: 1em;
+    margin-bottom: .25em;
+  }
+  
+  

@@ -1,0 +1,168 @@
+@import url('https://fonts.googleapis.com/css2?family=Righteous&display=swap');
+
+
+.logo{
+  position: absolute;
+  top:1.8em;
+  left:4em;
+  width:10%;
+}
+
+div.react-slideshow-container button{
+  display: none;
+}
+
+.slideshow{
+  position: absolute;
+  top:15.1em;
+  left:42.9em;
+  z-index: 4;
+}
+
+.button{
+  position: fixed;
+  top:20em;
+  left:4em;
+  padding:.5em 1.8em;
+  font-size: 1.2em;
+  border-radius: 2em;
+  border: none;
+  background-color: rgb(50, 218, 231);
+  color:white;
+  box-shadow: 1px 2px 0px -1px rgba(0,0,0,0.30);
+  cursor: pointer;
+  text-shadow: 1px 1px 2px #000000;
+}
+
+.button2 {
+  left:13em;
+  background-color: rgb(0,0,0,0);
+  border: 2px solid ;
+  padding:.4em 1.7em;
+}
+/* 
+.button :hover {
+  display: none;
+  animation: zoom  2.5s  ease-in-out;
+} */
+
+.heading{
+  font-family: 'Righteous', cursive;
+  text-shadow: 1px 1px 1px #000000;
+  position: fixed;
+  top:2em;
+  left:1em;
+  font-size:5em;
+  font-weight: 900;
+  color: white;
+}
+
+.heading2 {
+  position: fixed;
+  top:13.4em;
+  left:4.7em;
+  font-size:1.1em;
+  text-align: left;
+  margin:2em auto;
+  line-height: 18px;
+  width: 30%;
+  line-height: 22px;
+  text-shadow: 2px 1px 6px rgba(65, 65, 65, 0.39);
+}
+
+.shape {
+  position: fixed;
+  width:100vw;
+  height: 100vh;
+  z-index: -1;
+}
+
+.people {
+  position: fixed;
+  top:7em;
+  right:3.5em;
+  width:52%;
+  z-index: 2;
+}
+
+.green {
+  position: fixed;
+  top:0em;
+  right:0em;
+  width:15%;
+  z-index:1;
+}
+
+.leaf2{
+  position: fixed;
+  top:12em;
+  right:37em;
+  width:12%;
+  animation: shake 4s;
+  animation-iteration-count: infinite;
+}
+
+.leaf1{
+  position: fixed;
+  top:17em;
+  right:40em;
+  width:8%;
+  animation: shake1 4s;
+  animation-iteration-count: infinite;
+}
+
+.cloud {
+  position: fixed;
+  top:11em;
+  right:35em;
+  width:10%;
+  z-index:-1;
+}
+
+.cloud2 {
+  position: fixed;
+  top:9.3em;
+  right:26em;
+  width:7%;
+  z-index:1;
+  animation: float2 2.5s  infinite  ease-in-out;
+}
+
+.holding {
+  position: fixed;
+  top:6.3em;
+  right:13em;
+  width:12%;
+  z-index:1;
+  animation: float 2.5s  infinite  ease-in-out;
+}
+
+@keyframes zoom {
+  100% {
+  transform: scale(1.07, 1.07);
+  }
+  }
+
+@keyframes float {
+  from { transform: translate(0,  0px); }
+  65%  { transform: translate(0, 5px); }
+  to   { transform: translate(0, -0px); }    
+}
+
+@keyframes float2 {
+  from { transform: translate(0,  0px); }
+  65%  { transform: translate(0, 4px); }
+  to   { transform: translate(0, -0px); }    
+}
+
+@keyframes shake {
+  0% { transform: translate(1px, 1px) rotate(0deg); }
+  50% { transform: translate(-1px, -2px) rotate(-5deg); }
+  100% { transform: translate(1px, 1px) rotate(0deg); }
+}
+
+@keyframes shake1 {
+  0% { transform: translate(1px, 1px) rotate(0deg); }
+  50% { transform: translate(1px, 2px) rotate(5deg); }
+  100% { transform: translate(1px, 1px) rotate(0deg); }
+}
