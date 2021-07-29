@@ -10,6 +10,10 @@ import Gaming from "@iconify-icons/uil/laptop";
 import Sports from "@iconify-icons/uil/football-ball";
 import Traveling from "@iconify-icons/uil/plane";
 import Cooking from "@iconify-icons/uil/utensils";
+import { Link } from "react-router-dom";
+import person from '../../assets/person1.png';
+
+
 
 let categories={'Study Group':Study,Gaming,Sports,Traveling,Cooking}
 
@@ -37,8 +41,33 @@ export default function OtherSideBanner(props) {
   return (
     <div>
       <div className="side-banner2">
+        <Link to={'/profile/'+ props.data.user_ID}>
+        <div className="user-stuff">
+          <If condition={props.owner.profile_image}>
+                  <Then>
+                    <img
+                      className="my-user-image2"
+                      src={
+                        'data:image/jpg;base64,' + props.owner.profile_image
+                      }
+                      alt="user"
+                    />
+                  </Then>
+                  <Else>
+                  <img className="my-user-image2" src={person} alt="user" />
+
+                  </Else>
+                </If>
+          <div className="my-user-text2">
+            <p>{props.owner.first_name +' ' + props.owner.last_name}  </p>
+            <p>{props.owner.location}</p>
+        </div>
+      </div>
+      
+        </Link>
+     <div className="his-req-stuff">
         <div className="side-data2">
-          <p>{props.data.keyword.split(' ').join(' - ').toUpperCase()}</p>
+          <p>{props.data.keyword.toUpperCase()}</p>
           <div className="side-category2">
             <div className="side-category-icon2">
             <Icon icon={categories[props.data.category]} />
@@ -49,7 +78,7 @@ export default function OtherSideBanner(props) {
         </div>
         <img
           alt="ladder"
-          className="side-req-image"
+          className="side-req-image2"
           src={(props.data.image)?`data:image/jpg;base64,${props.data.image}`:"https://i.stack.imgur.com/y9DpT.jpg"}
         />
         <div className="side-desc2">
@@ -57,7 +86,7 @@ export default function OtherSideBanner(props) {
           {props.data.description +" "}
 </p>
         </div>
-            <If condition={!props.data.submitters.includes(props.owner)}>
+            <If condition={!props.data.submitters.includes(props.userID)}>
                 <Then>
 <Button
               variant="contained"
@@ -85,6 +114,7 @@ export default function OtherSideBanner(props) {
             </If>
         
         
+      </div>
       </div>
 
       <div className="side-number2">

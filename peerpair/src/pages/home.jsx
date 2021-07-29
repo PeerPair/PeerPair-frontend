@@ -35,7 +35,7 @@ const UserProfilePage = () =>{
       <div className="container">
         <div className="content">
             <div className="search">
-            <SearchBar/>
+            <SearchBar style={{visibility:'hidden'}}/>
             <Link to='/request' style={{ textDecoration: 'none' }}>
             <Button
         variant="contained"
