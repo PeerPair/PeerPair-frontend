@@ -74,6 +74,39 @@ const Navbar = (props) => {
 </li>
 
         <li> <Link to="/"><FaUser color="#333333" size={23}/></Link> </li>
+        <li> <Dropdown className="d-inline mx-2">
+          <Dropdown.Toggle  as={'div'} id="dropdown-autoclose-true">
+            <h2 className="bell-frh">{notify.newMessages.length}</h2>
+            <Notifications />
+          </Dropdown.Toggle>
+          <Dropdown.Menu>
+            <Dropdown.Header>Notifications</Dropdown.Header>
+            <hr />
+            {notify.newMessages.map((val) => {
+              return (
+                <Link to={'/request/'+val.split('/')[2]}>
+                  <Dropdown.Item   as='div' disable={true} className="new-not">
+                  <h2>{val.split('/')[3]} &nbsp; &nbsp; &nbsp; </h2><Link to={'/chat/'+val.split('/')[1]}>
+                  <ForumIcon />
+                    </Link>
+                  <h2>{console.log(val.split('/')[3],'notifications')}</h2>
+                </Dropdown.Item>
+                </Link>
+              );
+            })}
+          <Dropdown.Divider></Dropdown.Divider>
+            {notify.all.map((val) => {
+              return (
+                <Link to={'/request/'+val.split('/')[2]}>
+                  <Dropdown.Item  as='div' disable={true} className="old-not">
+                  {val.split('/')[3]}&nbsp; &nbsp; &nbsp; <Link to={'/chat/'+val.split('/')[1]}>
+                  <ForumIcon style={{margin:"5"}} /></Link>
+                </Dropdown.Item>
+                </Link>
+              );
+            }).reverse()}
+          </Dropdown.Menu>
+        </Dropdown> </li>
         <li> <Link to="/explore"><FaCompass color="#333333" size={23}/></Link> </li>
         <li>
             <a href='/search'>
@@ -111,39 +144,7 @@ const Navbar = (props) => {
             }).reverse()}
           </Dropdown.Menu>
         </Dropdown> </li> */}
-        <li> <Dropdown className="d-inline mx-2">
-          <Dropdown.Toggle  as={'div'} id="dropdown-autoclose-true">
-            <h2 className="bell-frh">{notify.newMessages.length}</h2>
-            <Notifications />
-          </Dropdown.Toggle>
-          <Dropdown.Menu>
-            <Dropdown.Header>Notifications</Dropdown.Header>
-            <hr />
-            {notify.newMessages.map((val) => {
-              return (
-                <Link to={'/request/'+val.split('/')[2]}>
-                  <Dropdown.Item   as='div' disable={true} className="new-not">
-                  <h2>{val.split('/')[3]} &nbsp; &nbsp; &nbsp; </h2><Link to={'/chat/'+val.split('/')[1]}>
-                  <ForumIcon />
-                    </Link>
-                  <h2>{console.log(val.split('/')[3],'notifications')}</h2>
-                </Dropdown.Item>
-                </Link>
-              );
-            })}
-          <Dropdown.Divider></Dropdown.Divider>
-            {notify.all.map((val) => {
-              return (
-                <Link to={'/request/'+val.split('/')[2]}>
-                  <Dropdown.Item  as='div' disable={true} className="old-not">
-                  {val.split('/')[3]}&nbsp; &nbsp; &nbsp; <Link to={'/chat/'+val.split('/')[1]}>
-                  <ForumIcon style={{margin:"5"}} /></Link>
-                </Dropdown.Item>
-                </Link>
-              );
-            }).reverse()}
-          </Dropdown.Menu>
-        </Dropdown> </li>
+
         <li> 
          <Link to='/chat/:id'>
          <ChatIcon></ChatIcon>

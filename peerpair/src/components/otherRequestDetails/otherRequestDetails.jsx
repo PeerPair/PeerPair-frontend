@@ -122,7 +122,7 @@ const OtherRequestDetails = (props) => {
 
         <Nav />
         <TopBanner />
-        <OtherSideBanner owner={userID} data={data} unsubmitREQ={(reqId)=>{handleUnSubmit(reqId);}} submitREQ={(reqId)=>{handleSubmit(reqId);}} />
+        <OtherSideBanner owner={owner} userID={userID} data={data} unsubmitREQ={(reqId)=>{handleUnSubmit(reqId);}} submitREQ={(reqId)=>{handleSubmit(reqId);}} />
         <div className="purple-div"></div>
         <img className="dayflow" alt="dayflow" src={funkyground} />
         <img className="man-walk" alt="dayflow" src={manwalks} />

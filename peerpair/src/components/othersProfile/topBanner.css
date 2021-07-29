@@ -1,0 +1,142 @@
+
+.ban-bg{
+    position: fixed;
+    top:-.24em;
+    height:27.5vh;
+    width: 100vw;
+    right: .3em;
+    opacity: .5;
+    margin: 0;
+    box-shadow: 0px 5px 15px -10px #000000;
+  }
+  
+  .topBanner-div {
+    position: relative;
+    height:27.5vh;
+    top:-.3em;
+  background-color: #dac8f3;
+  box-shadow: 0px 2px 5px -3.5px rgba(0,0,0,0.95);
+  width:100vw;
+  overflow: hidden;
+  }
+  
+  .banner-heading {
+    font-family: 'Righteous', cursive;
+    text-shadow: 2px 2px 2px rgba(12,5,3,0.52);
+    position: fixed;
+    top:1.8em;
+    left:1.68em;
+    font-size:2.5em;
+    font-weight: 900;
+    color: white;
+    z-index: 9;
+    opacity: .95;
+  }
+  
+  .banner-heading span {
+    color:rgb(243, 210, 238);
+  }
+  
+  
+  .clouds1 {
+    width:18%;
+    opacity: .9;
+    animation: 40s slide-left infinite;
+  }
+  
+  .clouds2 {
+    width:10%;
+    opacity: .9;
+    animation: 65s slide-left infinite;
+  }
+  
+  .clouds3 {
+    width:26%;
+    opacity: .9;
+    animation: 120s slide-left2 infinite;
+  }
+  
+  .clouds4 {
+    width:18%;
+    opacity: .9;
+    animation: 120s slide-left2 infinite;
+  }
+  
+  .clouds5 {
+    width:20%;
+    opacity: .9;
+    animation: 120s slide-left2 infinite;
+    animation-delay: 50s;
+  }
+  
+  .clouds6 {
+    width:10%;
+    opacity: .9;
+    animation: 70s slide-left infinite;
+    animation-delay: 80s;
+  }
+  
+  .container-cloud1{
+    /* background-color: tomato; */
+    position: absolute;
+    top:3.5em;
+    z-index: 3;
+  }
+  .container-cloud2{
+    /* background-color: rgb(71, 255, 95); */
+    position: absolute;
+    top:2em;
+    z-index: 4;
+    right: 0;
+  }
+  
+  .container-cloud3{
+    /* background-color: rgb(255, 206, 71); */
+    position: absolute;
+    top:7em;
+    z-index: 5;
+    right: 25em;
+  }
+  
+  .container-cloud4{
+    /* background-color: rgb(71, 255, 95); */
+    position: absolute;
+    top:8.5em;
+    z-index: 4;
+    right: -13em;
+  }
+  
+  .container-cloud5{
+    /* background-color: rgb(71, 255, 95); */
+    position: absolute;
+    top:3em;
+    z-index: 4;
+    right: -33em;
+  }
+  
+  .container-cloud6{
+    /* background-color: rgb(71, 255, 95); */
+    position: absolute;
+    top:7em;
+    z-index: 4;
+    right: -25em;
+  }
+  
+  
+  @keyframes slide-left {
+    from {
+      margin-left: 80%;
+    }
+    to {
+      margin-left: -30%;
+    }
+  }
+  
+  @keyframes slide-left2 {
+    from {
+      margin-left: 100%;
+    }
+    to {
+      margin-left:-130%;
+    }
+  }
