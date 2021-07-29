@@ -2,7 +2,7 @@ import React from 'react';
 import Navbar from '../navbar/navbar';
 import TopBanner from "./topBanner";
 import OthersReqCard from '../resultCard/card';
-import ResultsBanner from '../resultBanner/banner';
+import ResultsBanner from './banner';
 import { useState, useEffect } from "react";
 import cookie from "react-cookies";
 import { When, If, Else, Then } from "react-if";

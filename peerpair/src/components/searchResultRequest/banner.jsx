@@ -8,7 +8,7 @@ export default function ResultsBanner(props) {
   return (
 <div className="mycontainer mycontainer2">
 <div className="head head2">
-  <p>  </p>
+  <p> Search Results </p>
   {/* <div className="circle-icon setting-icon setting-icon2" >  */}
   {/* <Icon icon={slidersV} />  */}
   {/* </div> */}

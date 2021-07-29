@@ -16,7 +16,7 @@ export default function OthersReqCard(props) {
         <Link style={{textDecoration:'none'}} to={'/profile/'+props.requestData.user_ID}>
         
         <div className="user-data">
-          <img className="user-image" src={person} alt="user" />
+          <img className="user-image" src={(props.owner.profile_image)?( 'data:image/jpg;base64,'+props.owner.profile_image):person} alt="user" />
           <div className="user-text">
             <p>{props.owner.first_name +' '+ props.owner.last_name}</p>
             <p>{props.owner.location}</p>

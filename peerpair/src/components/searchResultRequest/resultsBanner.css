@@ -1,0 +1,20 @@
+.mycontainer2 {
+    position: fixed;
+    background-color: rgba(255, 253, 253,.8);
+    top:13em;
+    right: 14em;
+    width: 50%;
+    height: 66%;
+    border-radius: .6em;
+    box-shadow: 0px 2px 5px -3.5px rgba(0,0,0,0.95);
+  }
+  
+  .head2 p {
+    left:3.5em;
+  }
+  
+  .setting-icon2 {
+    top: 1.2em;
+    right: 3.2em;
+  
+  }

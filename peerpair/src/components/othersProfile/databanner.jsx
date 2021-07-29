@@ -90,7 +90,7 @@ export default function ProfileBanner(props) {
       </div>
 
       <div className="side-number22">
-        <p>20</p>
+        <p>{props.data.peers || 0}</p>
         <p className="submitters-p22">Pairs</p>
       </div>
       <div className="side-circle55"></div>
