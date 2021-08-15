@@ -10,43 +10,32 @@
   border-radius: 7px 0 0 7px;  
   z-index: 100;
 }
-
 ul, li {
   display: inline;
 }
-
 .icons {
   display: flex;
   flex-direction: column;
 }
-
 .icons li:nth-child(1) {
   margin-top: 2.5em;
   margin-bottom: 5em;
   background-color: rgb(211, 236, 240);
-
 }
-
 .icons li {
   padding: 1.2em 1.5em;
   box-shadow: 5px 5px 15px -15px #000000;
 }
-
 .icons li:hover {
   background-color: rgb(211, 236, 240);
   cursor: pointer;
 }
-
 /* .d-inline .mx-2{
   width: 20px;
 }
-
 .d-inline .mx-2 .dropdown-menu .show{
   width: 100px;
 } */
-
-
-
 /*************************************FOR NOTIFICATIONS***********************************/
 .dropdown-toggle{
   text-align: center;
@@ -94,7 +83,6 @@ ul, li {
   color: #252323c2;
   cursor: pointer;
 }
-
 .new-not{
   background-color: rgb(78, 202, 222);
   padding: 10px;
@@ -106,7 +94,6 @@ ul, li {
   line-height: 20px;
   font-weight: bold;
 }
-
 .old-not{
   align-items: center;
   display: grid;

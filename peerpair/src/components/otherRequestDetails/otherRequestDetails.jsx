@@ -12,10 +12,23 @@ import manwalks from '../../assets/manwalks.png';
 import Nav from '../navbar/navbar.jsx';
 import OtherSideBanner from '../otherSideBanner/otherRequestSide.jsx';
 import TopBanner from '../ownerRequestDetails/banner/banner.jsx';
+
+import { useDispatch } from 'react-redux';
+import {getNotifications} from '../../store/notification/reducer'
+
 const API = process.env.REACT_APP_API_URL;
 
 //when other user want to view details for one request
 const OtherRequestDetails = (props) => {
+  let dispatch = useDispatch();
+  useEffect(()=>{
+    const getNotification= async()=>{
+      await dispatch(getNotifications());
+      console.log('THE NOTIFICATION REDUCER RESULTS', props.NotificationResults )
+    }
+    getNotification();
+  },[]);
+
   function usePathName() {
     let location = useLocation();
     useEffect(() => {
@@ -109,7 +122,7 @@ const OtherRequestDetails = (props) => {
 
         <Nav />
         <TopBanner />
-        <OtherSideBanner owner={userID} data={data} unsubmitREQ={(reqId)=>{handleUnSubmit(reqId);}} submitREQ={(reqId)=>{handleSubmit(reqId);}} />
+        <OtherSideBanner owner={owner} userID={userID} data={data} unsubmitREQ={(reqId)=>{handleUnSubmit(reqId);}} submitREQ={(reqId)=>{handleSubmit(reqId);}} />
         <div className="purple-div"></div>
         <img className="dayflow" alt="dayflow" src={funkyground} />
         <img className="man-walk" alt="dayflow" src={manwalks} />

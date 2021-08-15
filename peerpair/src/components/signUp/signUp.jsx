@@ -138,7 +138,6 @@ function SignUp(props){
     <style>{'body { background-color: #EDE3FA; hight: 100vh }'}</style>
 
         <Grid container component="main" className={classes.root}>
-      <CssBaseline />
       <img className="logoy" alt="shape" src={logo} />
       <img className="shapey" alt="shape" src={shape} />
       <img className="peopley" alt="shape" src={people} />
@@ -208,7 +207,7 @@ function SignUp(props){
               required
               fullWidth
               name="password"
-              label="Password"
+              label="Password, At Least 8 Characters of both Numbers and Letters"
               type="password"
               id="password"
               autoComplete="current-password"
