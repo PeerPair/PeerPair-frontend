@@ -207,7 +207,7 @@ function SignUp(props){
               required
               fullWidth
               name="password"
-              label="Password"
+              label="Password, At Least 8 Characters of both Numbers and Letters"
               type="password"
               id="password"
               autoComplete="current-password"
