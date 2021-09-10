@@ -16,6 +16,8 @@ import { makeStyles } from '@material-ui/core/styles';
 import SendIcon from '@material-ui/icons/Send';
 import VideoCallIcon from '@material-ui/icons/VideoCall';
 import UnfoldMoreIcon from '@material-ui/icons/UnfoldMore';
+import {If ,Then ,Else} from 'react-if';
+import Avatar from 'react-avatar';
 
 
 const socket = io(process.env.REACT_APP_API_URL);
@@ -28,6 +30,7 @@ const Chat = (props) => {
   const [messageText, setMessage] = useState("");
   const [pageNum, addPage] = useState(1);
   const [open, setOpen] = useState(false);
+  const [profileImg, setProfileImg] = useState([])
   useEffect(() => {
     socket.emit('join-room', roomID);
 
@@ -74,6 +77,28 @@ useEffect(() => {
     
   }, [props.roomID]);
 
+  useEffect(() => {
+    const getProfileImg = async () => {
+      setProfileImg(await fetchProfileImg());
+  }
+  getProfileImg(props.roomID)
+},[props.roomID])
+
+const fetchProfileImg = async () => {
+  let token = await cookie.load('auth');
+  const res = await fetch(`${process.env.REACT_APP_API_URL}/profile/${props.roomID}`,{
+    method: 'GET',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer ' + token,
+      }
+  })
+  console.log(res,'res');
+  const data = await res.json()
+  console.log(data, 'profile_Img');
+  return data;
+}
   const submitHandle = (e) => {
     e.preventDefault();
     console.log(e);
@@ -142,11 +167,18 @@ const classes = useStyles();
     <div className="chatBox-frh">
       <div className="header-frh">
     <header>
-      <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/1940306/chat_avatar_01.jpg" alt=""/>
-      {/* <img alt='profileImage' src={'data:image/jpg;base64,'+props.info.userInfo.usertData.profile_image}/> */}
-			<div>
+      <If condition={profileImg.profile_image}>
+        <Then>
+        <img src={'data:image/jpg;base64,'+profileImg.profile_image} alt="profileImage"/>
+        {/* {console.log(profileImg, 'image************')} */}
+        </Then>
+        <Else>
+        <Avatar name={profileImg.first_name + ' ' + profileImg.last_name} maxInitials={2} size={70}/>
+        </Else>
+      </If>
+			<div className="textFrh">
 				<h2>Start Chatting</h2>
-				<h3>Update Your Status</h3>
+				<h3>{profileImg.first_name} {profileImg.last_name}</h3>
 			</div>
       <Link to={`/video/${roomID}`} target='_blank' ><Button
         variant="contained"
@@ -163,27 +195,48 @@ const classes = useStyles();
     <div className="scrolling-frh">
     <ul className="chat">
         {oldMessages.map((val,idx)=> 
-        <li className="me">
+          <If condition={val.sender_id=== props.roomID}>
+            <Then>
+          <li className="your-partner">
           <div className="entete">
-					<span className="status green-x"></span>
-					<h2>{val.sender_name}</h2>
-          {/* <h2>{console.log(val._id)}</h2> */}
-				  </div>
-				  <div className="triangle"></div>
+            <h2>{val.sender_name}</h2>
+          </div>
 				  <div className="message">{val.messege}</div>
-          {/* <div key={idx}><div><b>{val.sender_name}</b></div> {val.messege} </div> */}
-        </li>)}
-        {messages.map((val,idx)=> 
-        <li className="me">
+          </li>
+            </Then>
+            <Else>
+            <li className="me">
           <div className="entete">
-					<span className="status blue-y"></span>
-					<h2>{val.senderName}</h2>
-				  </div>
-				  <div className="triangle"></div>
-				  <div className="message">{val.message}</div>
-          {/* <div key={idx}><div><b>{val.senderName}</b></div> {val.message} </div> */}
-        </li>)}
-        
+            {/* <h2>{val.sender_name}</h2> */}
+            <h2>You</h2>
+          </div>
+				  <div className="message">{val.messege}</div>
+          </li>
+            </Else>
+          </If>
+          )}
+       
+        {messages.map((val,idx)=> 
+        <If condition={val.senderID=== props.roomID}>
+        <Then>
+      <li className="your-partner">
+      <div className="entete">
+        <h2>{val.senderName}</h2>
+      </div>
+      <div className="message">{val.message}</div>
+      </li>
+        </Then>
+        <Else>
+        <li className="me">
+      <div className="entete">
+        {/* <h2>{val.sender_name}</h2> */}
+        <h2>You</h2>
+      </div>
+      <div className="message">{val.message}</div>
+      </li>
+        </Else>
+      </If>
+      )}        
     </ul>
     </div>
       {/* <div className="message-container" ></div> */}

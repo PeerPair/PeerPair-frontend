@@ -1,0 +1,96 @@
+.aboutContainer{
+    background-color: #c69bef;
+    width: 51em;
+    height: 28.5em;
+    z-index: 1;
+    margin: auto;
+    margin-top: 2em;
+    margin-bottom: 5em;
+    border-top-left-radius: 5em;
+    border-top-right-radius: 5em;
+}
+
+.logoAboutText{
+    position: absolute;
+    left: 20em;
+    margin-top: 3.2em;
+    width: 18%;
+    color: #ffffff;
+    font-weight: bolder;
+    font-size: larger;
+}
+
+.logoAboutText p{
+    color: #5e427d;
+    font-family: 'Righteous', cursive;
+    margin-left: 1em;
+    line-height: 1.4em;
+}
+
+.landingNavFRH{
+    top: .5em;
+    position: absolute;
+    right: 0;
+    z-index: 2;
+    display: flex;
+    margin-right: 2em;
+}
+
+.landingNavFRH div{
+    cursor: pointer;
+    margin: 2.2em 4em;
+    font-size: 1.05em;
+    color:white;
+    text-shadow: 2px 1px 3px rgba(24, 24, 24, 0.39);
+}
+
+.nameA{
+    position: absolute;
+    left: 25em;
+    color: white;
+    font-weight: bolder;
+    margin-top: 7.8em ;
+}
+
+.nameA h2{
+    font-size: 3.5em;
+    line-height: 1.2em;
+    font-family: 'Righteous', cursive;
+}
+
+.nameA p{
+    margin-top: 1.3em;
+    line-height: 1.5em;
+}
+
+.imgAbout{
+    position: absolute;
+    right: 0;
+    display: flex;
+    margin-right: 22em;
+}
+
+.imgAbout img{
+    margin-top: 5.5em ;
+    width: 19.5em;
+    height: 19.5em;
+    border-radius: 50%;
+}
+
+.aboutIcon{
+    position: absolute;
+    left: 27.5em;
+    margin-top: 22em ;
+}
+
+.aboutIcon img{
+    width: 2.7em;
+    height: 2.7em;
+    margin-left: .2em;
+}
+
+.aboutIcon .github{
+    width: 2.6em;
+    height: 2.6em;
+}
+

@@ -20,7 +20,8 @@ import { If, Then, Else } from 'react-if';
 import LandingPage from '../../pages/landing'
 import Chatlist from '../../pages/chatlist.jsx';
 import ChatListWithChatMsg from '../../pages/chatList&chatMsg.jsx';
-
+import About from '../../pages/about.jsx';
+import ContactUs from '../../pages/contactUs.jsx';
 
 
 const Main = (props) =>{
@@ -70,6 +71,8 @@ const Main = (props) =>{
       <Route  exact path="/signin" component={SignIn} />
       <Route  exact path="/signup" component={SignUp} />
       <Route exact path="/" component={LandingPage}/>
+      <Route exact path="/about" component={About}/>
+      <Route exact path="/contact" component={ContactUs}/>
       {/* <Route exact path="*" >
         <Redirect to='/signin'/>
       </Route> */}
