@@ -11,7 +11,7 @@ const ContactUs = (props) => {
   function sendEmail(e) {
     e.preventDefault();
 
-    emailjs.sendForm(process.env.REACT_APP_SERVICE_ID, process.env.REACT_APP_TEMPLATE_ID, e.target, process.env.REACT_APP_USER_ID)
+    emailjs.sendForm('service_t84uk1d', 'template_hoavy2d', e.target, 'user_pY4vLSW2UR1ntEkbLihPC')
       .then((result) => {
         console.log(result);
       }, (error) => {
