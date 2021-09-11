@@ -16,11 +16,13 @@
 }
 .chatBox-frh header img:first-child {
   border-radius: 50%;
+  width: 70px;
+  height: 70px;
 }
-.chatBox-frh header div {
+.chatBox-frh header .textFrh {
   margin-left: 10px;
   margin-right: 55%;
-  padding-top: 14px;
+  padding-top: 18px;
 }
 .chatBox-frh header h2 {
   font-size: 16px;
@@ -49,23 +51,19 @@
   font-weight: bold;
   padding: 3px;
 }
+.chatBox-frh header .sb-avatar__text{
+  border-radius: 50%;
+}
 .chat li {
   padding: 10px 30px;
-}
-.chat h2,
-.chat h3 {
-  display: inline-block;
-  font-size: 13px;
-  font-weight: normal;
-}
-.chat h3 {
-  color: #bbb;
 }
 .chat .entete {
   margin-top: 17px;
   margin-bottom: 5px;
 }
-.chat .entete h2{
+.chat h2{
+  display: inline-block;
+  font-size: 13px;
   font-weight: bold;
 }
 .chat .message {
@@ -78,36 +76,20 @@
   border-radius: 5px;
   margin-bottom: 15px;
 }
-/* #chat .me {
-  text-align: right;
-  margin-right: 90%;
-} */
-
-/* .chat .you .message {
-  background-color: #eed3f0;
-} */
-.chat .me .message {
+.chat .your-partner .message {
   background-color: #cfbadf;
-  /* margin-left: 700px; */
 }
-/* .chat .triangle {
-  width: 0;
-  height: 0;
-  border-style: solid;
-  border-width: 0 10px 10px 10px;
+.chat .me .message {
+  background-color: #ecddf8;
+  float: right;
+  margin-right: 30px;
 }
-.chat .you .triangle {
-  border-color: transparent transparent #eed3f0 transparent;
-  margin-left: 8px;
+.chat .me .entete h2{
+  margin-left: 825px;
 }
-.chat .me .triangle {
-  border-color: transparent transparent #cfbadf transparent;
-  margin-left: 8px;
-} */
-
 .scrolling-frh{
-    overflow-y: scroll;
-  }
+  overflow-y: scroll;
+}
 .footerIcon {
   background-color: rgb(211, 236, 240);
   border-radius: 5px;
@@ -146,3 +128,4 @@
   margin-top: 10px;
   /* display:inline-block; */
 }
+

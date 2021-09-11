@@ -1,0 +1,16 @@
+.contactUs{
+    display: grid;
+    grid-template-columns: 40% 40% ;
+    gap: 4%;
+    margin-left: 8%;
+}
+
+.con{
+    margin-top: 11em;
+    width: 48em;
+    height: 37.8em;
+}
+
+.contact-form{
+    margin-top: 8em;
+}
