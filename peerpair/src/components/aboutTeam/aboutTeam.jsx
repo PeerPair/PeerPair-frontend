@@ -30,12 +30,12 @@ const AboutTeam = (props) => {
                             <img alt="mousa" src={mousa}></img>
                         </div>
                         <div className="aboutIcon">
-//                             <a href="https://www.linkedin.com/in/mousasabah/" target="_blank" rel="noopener noreferrer" >
+                            /* <a href="https://www.linkedin.com/in/mousasabah/" target="_blank" rel="noopener noreferrer" >*/
                                 <img alt="linkedin" src={linkedin} />
-//                                     </a>
-//                             <a href="https://github.com/MousaSbbah" target="_blank" rel="noopener noreferrer" >
+                                  /*  </a> */
+                           /*  <a href="https://github.com/MousaSbbah" target="_blank" rel="noopener noreferrer" > */
                                 <img alt="git" className="github" src={git} />
-//                                     </a>
+                                 /*   </a> */
                         </div>
                     </div>
                     <div>
