@@ -30,12 +30,12 @@ const AboutTeam = (props) => {
                             <img alt="mousa" src={mousa}></img>
                         </div>
                         <div className="aboutIcon">
-                            /* <a href="https://www.linkedin.com/in/mousasabah/" target="_blank" rel="noopener noreferrer" >*/
+                            {/* <a href="https://www.linkedin.com/in/mousasabah/" target="_blank" rel="noopener noreferrer" > */}
                                 <img alt="linkedin" src={linkedin} />
-                                  /*  </a> */
-                           /*  <a href="https://github.com/MousaSbbah" target="_blank" rel="noopener noreferrer" > */
+                                   {/* </a>  */}
+                           {/* <a href="https://github.com/MousaSbbah" target="_blank" rel="noopener noreferrer" >  */}
                                 <img alt="git" className="github" src={git} />
-                                 /*   </a> */
+                                 {/* </a>  */}
                         </div>
                     </div>
                     <div>
@@ -47,12 +47,12 @@ const AboutTeam = (props) => {
                             <img alt="furat" src={furat}></img>
                         </div>
                         <div className="aboutIcon">
-//                             <a href="https://www.linkedin.com/in/furatmalkawi/" target="_blank" rel="noopener noreferrer" >
+                             {/* <a href="https://www.linkedin.com/in/furatmalkawi/" target="_blank" rel="noopener noreferrer" > */}
                                 <img alt="linkedin" src={linkedin} />
-//                                     </a>
-//                             <a href="https://github.com/furatmalkawi29" target="_blank" rel="noopener noreferrer" >
+                                     {/* </a> */}
+                             {/* <a href="https://github.com/furatmalkawi29" target="_blank" rel="noopener noreferrer" > */}
                                 <img alt="git" className="github" src={git} />
-//                                     </a>
+                                    {/* </a> */}
                         </div>
                     </div>
                     <div>
@@ -64,12 +64,12 @@ const AboutTeam = (props) => {
                             <img alt="yasmin" src={yasmin}></img>
                         </div>
                         <div className="aboutIcon">
-//                             <a href="https://www.linkedin.com/in/yasmin-al-khateeb/" target="_blank" rel="noopener noreferrer" >
+                             {/* <a href="https://www.linkedin.com/in/yasmin-al-khateeb/" target="_blank" rel="noopener noreferrer" > */}
                                 <img alt="linkedin" src={linkedin} />
-//                                     </a>
-//                             <a href="https://github.com/yasmeenokh" target="_blank" rel="noopener noreferrer" >
+                                     {/* </a> */}
+                             {/* <a href="https://github.com/yasmeenokh" target="_blank" rel="noopener noreferrer" > */}
                                 <img alt="git" className="github" src={git} />
-//                                     </a>
+                                     {/* </a> */}
                         </div>
                     </div>
                     <div>
@@ -81,12 +81,12 @@ const AboutTeam = (props) => {
                             <img alt="farah" src={farah}></img>
                         </div>
                         <div className="aboutIcon">
-//                             <a href="https://www.linkedin.com/in/farah-wahaibi/" target="_blank" rel="noopener noreferrer" >
+                             {/* <a href="https://www.linkedin.com/in/farah-wahaibi/" target="_blank" rel="noopener noreferrer" > */}
                                 <img alt="linkedin" src={linkedin} />
-//                                     </a>
-//                             <a href="https://github.com/farahalwahaibi" target="_blank" rel="noopener noreferrer" >
+                                     {/* </a> */}
+                             {/* <a href="https://github.com/farahalwahaibi" target="_blank" rel="noopener noreferrer" > */}
                                 <img alt="git" className="github" src={git} />
-//                                     </a>
+                                     {/* </a> */}
                         </div>
                     </div>
                 </Fade>
