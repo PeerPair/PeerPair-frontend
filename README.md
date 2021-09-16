@@ -1,7 +1,7 @@
 # PeerPair-frontend
 
 
-**[Frontend](https://peer-pair.netlify.app/)**
+# **[PeerPair App](https://peer-pair.netlify.app/)**
 
 **Group Members :**
 
